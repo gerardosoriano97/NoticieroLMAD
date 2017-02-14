@@ -1,0 +1,25 @@
+$small: 300px;
+$medium: 618px;
+$large: 936px;
+$xLarge: 1254px;
+
+@mixin oneColumn {
+  @media (min-width: $small) and (max-width: $medium - 1){
+    @content;
+  }
+}
+@mixin twoColumn {
+  @media (min-width: $medium) and (max-width: $large - 1){
+    @content;
+  }
+}
+@mixin threeColumn {
+  @media (min-width: $large) and (max-width: $xLarge - 1){
+    @content;
+  }
+}
+@mixin fourColumn {
+  @media (min-width: $xLarge){
+    @content;
+  }
+}
