@@ -1,0 +1,17 @@
+{
+  "name": "PF_BDM",
+  "description": "Proyecto final de BDM",
+  "main": "",
+  "authors": [
+    "Gerardo Soriano"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
