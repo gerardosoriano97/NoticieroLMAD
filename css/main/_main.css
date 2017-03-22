@@ -1,8 +1,11 @@
+@font-face {
+  font-family: _Moderne_Sans_;
+  src: url("../../resources/fonts/ModerneSans.ttf"); }
 body {
   background-color: #f6ecc8;
   display: flex;
   flex-wrap: wrap; }
-  body > div.header {
+  body > [class^="header"] {
     width: 100%;
     height: 200px;
     background-color: #786b40;
@@ -24,30 +27,73 @@ body {
       justify-content: space-around;
       align-content: flex-start;
       padding-top: 10px; }
-      @media (min-width: 300px) and (max-width: 617px) {
-        body > div.content > div.blocks {
-          max-width: 300px;
-          min-width: 300px; } }
-      @media (min-width: 618px) and (max-width: 935px) {
-        body > div.content > div.blocks {
-          max-width: 618px;
-          min-width: 618px; } }
-      @media (min-width: 936px) and (max-width: 1253px) {
-        body > div.content > div.blocks {
-          max-width: 936px;
-          min-width: 936px; } }
       @media (min-width: 1254px) {
         body > div.content > div.blocks {
           max-width: 1254px;
           min-width: 1254px; } }
-      body > div.content > div.blocks > div.block {
+      @media (min-width: 936px) and (max-width: 1253px) {
+        body > div.content > div.blocks {
+          max-width: 936px;
+          min-width: 936px; } }
+      @media (min-width: 618px) and (max-width: 935px) {
+        body > div.content > div.blocks {
+          max-width: 618px;
+          min-width: 618px; } }
+      @media (min-width: 300px) and (max-width: 617px) {
+        body > div.content > div.blocks {
+          max-width: 300px;
+          min-width: 300px; } }
+      body > div.content > div.blocks > [class^="block"] {
         width: 300px;
-        height: 350px;
+        height: 380px;
         margin-bottom: 15px;
         background-color: #bf2638; }
-      body > div.content > div.blocks > div[class$="_2"] {
+      body > div.content > div.blocks > [class$="_2"] {
         width: 618px; }
     body > div.content > div.footer {
       width: 100%;
       height: 200px;
       background-color: #355954; }
+
+div.outstanding {
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  height: 380px;
+  min-height: 380px;
+  max-height: 380px;
+  margin-bottom: 15px;
+  background-color: #bf2638;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  justify-content: center; }
+  div.outstanding > img {
+    position: absolute;
+    width: auto;
+    height: auto;
+    min-height: 100%;
+    max-height: 100%; }
+  div.outstanding div.gradient {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-flow: wrap;
+    position: relative;
+    background: linear-gradient(black, rgba(255, 255, 255, 0));
+    padding: 10px; }
+    div.outstanding div.gradient > h1.title, div.outstanding div.gradient > h3.autor {
+      display: block;
+      width: 100%;
+      margin: 0;
+      color: #f6ecc8; }
+    div.outstanding div.gradient > h1.title {
+      height: 85%;
+      font-size: 22px;
+      font-family: _Moderne_Sans_; }
+    div.outstanding div.gradient > h3.autor {
+      height: 15%;
+      font-size: 18px; }
+
+/*# sourceMappingURL=_main.css.map */
