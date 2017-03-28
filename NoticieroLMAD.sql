@@ -228,8 +228,6 @@ begin
 	order by idNews desc limit 30;
 end $$
 delimiter ;
-	
-)
 
 #TRIGGERS
 
@@ -248,6 +246,12 @@ end $$
 delimiter ;	
 
 #VIEWS
+
+create or replace view vw_getRecentNews as
+select idNews, title, description, content, state, releaseDate, fk_idUser, fk_idSection, fk_idStyle 
+from nl_news order by idNews desc limit 30;
+
+#PRUEBAS
 
 insert into nl_type(typeName, typeDescription) values
 ('Administrador','Es el usuario base, el que maneja todo.'),
@@ -271,3 +275,5 @@ call sp_setNews('Cuarta noticia','Sorprendente avance en el proyecto final', 'El
 call sp_getNews(1);
 call sp_getRecentNews();
 call sp_getSectionNews(1);
+
+select * from vw_getrecentnews;
