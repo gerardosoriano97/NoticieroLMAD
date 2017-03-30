@@ -1,7 +1,7 @@
 #PROCEDURES
 
 /*User procedures*/
-/*
+
 delimiter $$
 create or replace procedure sp_getAllUsers()
 begin
@@ -66,9 +66,9 @@ begin
 	delete from nl_user where idUser = _idUser;
 end $$
 delimiter ;
-*/
+
 /*Section procedures*/
-/*
+
 delimiter $$
 create or replace procedure sp_getAllSections()
 begin
@@ -107,9 +107,9 @@ begin
 	delete from nl_section where idSection = _idSection;
 end $$
 delimiter ;
-*/
+
 /*News procedures*/
-/*
+
 delimiter $$
 create or replace procedure sp_setNews(
 	in _title varchar(100),
@@ -136,9 +136,9 @@ create or replace procedure sp_getNews(
 )
 begin
 	declare _status bit(1);
-    select state into _status from nl_news where idNews = _idNews;
+    select state into _status from vw_newsByUser where idNews = _idNews;
     if(_status = 1) then
-		select title, description, content, releaseDate from nl_news where idNews = _idNews;
+		select title, description, content, releaseDate, name, lastName from vw_newsByUser where idNews = _idNews;
 	end if;
 end $$
 delimiter ;
@@ -146,8 +146,8 @@ delimiter ;
 delimiter $$
 create or replace procedure sp_getRecentNews()
 begin
-	select idNews, title, description, content, state, releaseDate, fk_idUser, fk_idSection, fk_idStyle 
-    from nl_news order by idNews desc limit 30;
+	select idNews,title,description,name,lastName,idSection,sectionName,idStyle,styleName 
+    from vw_newsByUser order by idNews desc limit 30;
 end $$
 delimiter ;
 
@@ -156,10 +156,36 @@ create or replace procedure sp_getSectionNews(
 	in _idSection int unsigned
 )
 begin
-	select idNews, title, description, content, fk_idUser, fk_idStyle from nl_news
-	left outer join nl_section on fk_idSection = _idSection
-	order by idNews desc limit 30;
+	select idNews,title,description,name,lastName,idStyle,styleName from vw_newsByUser
+	where idSection = _idSection order by idNews desc limit 30;
 end $$
 delimiter ;
 */
 /*Comment procedures*/
+delimiter $$
+create or replace procedure sp_setComment(
+	in _comment varchar(255),
+    in _fk_idUser int unsigned,
+    in _fk_idNews int unsigned,
+    in _fk_idComment int unsigned
+)
+begin
+	insert into nl_comment set
+		comment = _comment,
+        fk_idUser = _fk_idUser,
+        fk_idNews = _fk_idNews,
+        fk_idComment = _fk_idComment;
+end $$
+delimiter ; 
+
+delimiter $$
+create or replace procedure sp_getCommentInNews(
+	in _idNews int unsigned
+)
+begin
+	select namePattern,lastNamePattern,idCommentPattern,commentPattern,publicationPattern
+    from vw_commentInNews where idNews = _idNews order by publicationPattern desc;
+end $$
+delimiter ;
+
+call sp_getCommentInNews(1);

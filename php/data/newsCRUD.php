@@ -15,7 +15,9 @@ class NewsMethods
       $result = array();
       $stm = $conn->prepare('call sp_getRecentNews()');
       $stm->execute();
-      foreach ($stm->fetchAll() as $r) {
+      $result = $stm->fetchAll();
+      return json_encode($result);
+      /*foreach ($stm->fetchAll() as $r) {
         $news = new NewsModel();
           $news->setId($r['idNews']);
           $news->setTitle($r['title']);
@@ -29,7 +31,7 @@ class NewsMethods
 
         $result[] = $news;
       }
-      return $result;
+      return $result;*/
     } catch (PDOException $e) {
       die($e->getMessage());
     } finally {

@@ -2,6 +2,9 @@ body{
   background-color: $colorPalour;
   display: flex;
   flex-wrap: wrap;
+  *{
+    transition: box-shadow 0.3s ease-in-out;
+  }
   a{
     &:link{
       text-decoration: none;
