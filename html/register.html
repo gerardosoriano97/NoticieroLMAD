@@ -8,14 +8,15 @@
   <body>
     <div class="formContainer">
       <form class="registerForm" method="post">
-        <input type="text" name="name" placeholder="Tu Nombre *">
-        <input type="text" name="lastName" placeholder="Tus Apellidos *">
-        <input type="email" name="email" placeholder="Tu Correo *">
-        <input type="password" name="password" placeholder="Tu Contraseña *">
+        <input class="toJson" type="text" name="name" placeholder="Tu Nombre *">
+        <input class="toJson" type="text" name="lastName" placeholder="Tus Apellidos *">
+        <input class="toJson" type="email" name="email" placeholder="Tu Correo *">
+        <input class="toJson" id="password" type="password" name="password" placeholder="Tu Contraseña *">
         <input type="password" name="rePassword" placeholder="Confirma Contraseña *">
         <input type="submit" name="send" value="Submit">
         <span>¿Ya tienes cuenta? <a href="login.html">¡Inicia sesión aquí!</a></span>
       </form>
     </div>
+    <script src="../js/dist/bundle.js"></script>
   </body>
 </html>

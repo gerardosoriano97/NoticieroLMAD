@@ -13,20 +13,18 @@ class UserModel
   private $avatar;
   private $fk_idType;
 
-  function __construct(){}
-  function __construct($id, $name, $lastName, $email, $password, $phoneNumber, $birthDate, $cover, $avatar, $fk_idType){
-    $this->id = $id;
-    $this->name = $name;
-    $this->lastName = $lastName;
-    $this->email = $email;
-    $this->password = $password;
-    $this->phoneNumber  $phoneNumber;
-    $this->birthDate = $birthDate;
-    $this->cover = $cover;
-    $this->avatar = $avatar;
-    $this->fk_idType = $fk_idType;
+  function __construct(){
+    $this->id = null;
+    $this->name = null;
+    $this->lastName = null;
+    $this->email = null;
+    $this->password = null;
+    $this->phoneNumber = null;
+    $this->birthDate = null;
+    $this->cover = null;
+    $this->avatar = null;
+    $this->fk_idType = null;
   }
-
   function getId(){ return $this->id; }
   function setId($id){ $this->id = $id; }
 

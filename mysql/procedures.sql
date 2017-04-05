@@ -15,7 +15,7 @@ create or replace procedure sp_setUser(
 	in _name varchar(40),
     in _lastName varchar(40),
     in _email varchar(60),
-    in _password varchar(30),
+    in _password varchar(255),
     in _phoneNumber varchar(15),
     in _birthDate date,
     in _avatar varchar(100),
@@ -67,6 +67,16 @@ begin
 end $$
 delimiter ;
 
+delimiter $$
+create or replace procedure sp_login(
+	in _email varchar(60),
+    in _password varchar(255)
+)
+begin
+	select idUser, name, lastName, phoneNumber, birthDate, avatar, cover, fk_idType
+    from nl_user where email = _email and password = _password;
+end $$
+delimiter ;
 /*Section procedures*/
 
 delimiter $$
@@ -160,7 +170,7 @@ begin
 	where idSection = _idSection order by idNews desc limit 30;
 end $$
 delimiter ;
-*/
+
 /*Comment procedures*/
 delimiter $$
 create or replace procedure sp_setComment(
@@ -188,4 +198,12 @@ begin
 end $$
 delimiter ;
 
-call sp_getCommentInNews(1);
+delimiter $$
+create or replace procedure sp_getCommentInComment(
+	in _idCommentPattern int unsigned
+)
+begin
+	select nameChild,lastNameChild,idCommentChild,commentChild,publicationChild
+    from vw_commentInComment where idCommentPattern = _idCommentPattern order by publicationChild desc;
+end $$
+delimiter ;

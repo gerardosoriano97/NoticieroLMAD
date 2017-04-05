@@ -1,6 +1,6 @@
 <?php
-include('connection.php');
-include(dirname(__DIR__).'/model/news.php');
+include_once('connection.php');
+include_once(dirname(__DIR__).'/model/news.php');
 
 //aqui crearemos todos los metodos de las noticias
 class NewsMethods
@@ -38,7 +38,6 @@ class NewsMethods
       $conn = null;
       $pdo->closeConnection();
     }
-
   }
 }
 

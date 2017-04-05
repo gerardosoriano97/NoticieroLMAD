@@ -1,3 +1,5 @@
+drop database noticiero_lmad;
+
 create database noticiero_lmad;
 
 use noticiero_lmad;
@@ -14,12 +16,12 @@ idUser int unsigned not null auto_increment,
 name varchar(40) not null,
 lastName varchar(40) not null,
 email varchar(60) not null,
-password varchar(30), 
+password varchar(255), 
 phoneNumber varchar(15),
 birthDate date,
 avatar varchar(100),
 cover varchar(100),
-fk_idType int unsigned not null,
+fk_idType int unsigned not null default 4,
 primary key(idUser),
 foreign key(fk_idType) references nl_type(idType)
 );
