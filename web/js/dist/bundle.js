@@ -10333,7 +10333,7 @@ return jQuery;
 /* WEBPACK VAR INJECTION */(function($) {$(".admin_news").ready(function(){
   $.ajax({
     method:   "POST",
-    url:      "./../../../php/controller/getAllNews.php"
+    url:      "./../../server/php/controller/getAllNews.php"
   }).done(function(msg){
     $.each(JSON.parse(msg),function(key,val){
       $("table#tableNews>tbody").append(''+
@@ -10354,19 +10354,29 @@ return jQuery;
     let id = $(e.currentTarget).attr("id");
     $.ajax({
       method:   "POST",
-      url:      "./../../../php/controller/getNews.php",
+      url:      "./../../server/php/controller/getNews.php",
       data:     {"id": id}
     }).done(function(msg){
       let obj = JSON.parse(msg);
-      console.log(obj);
+      $('[name="id"]').val(id);
       $('[name="title"]').val(obj[0].title);
       $('[name="description"]').val(obj[0].description);
       $('[name="content"]').val(obj[0].content);
-      $('select.section').val(obj[0].idSection);
+      $('[name="section"]').val(obj[0].idSection);
     }).fail(function(jqXHR, textStatus){
       alert("Request failed: " + textStatus);
     });
   });
+
+  /*$("form.newsForm").validate({
+    debug: true,
+    rules{
+      id:{},
+      title:{},
+      description{},
+      content:{},
+    }
+  })*/
 });
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -10408,11 +10418,11 @@ return jQuery;
     let json = JSON.stringify(jsonObj);
     $.ajax({
       method:   "POST",
-      url:      "./../php/controller/login.php",
+      url:      "./../../server/php/controller/login.php",
       data:     {"json": json}
     }).done(function(msg){
       if (msg == "success") {
-        alert('jalo we');
+        window.location = 'homepage.html';
       }
     });
   }

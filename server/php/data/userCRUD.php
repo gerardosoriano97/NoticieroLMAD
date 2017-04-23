@@ -40,7 +40,7 @@ class UserMethods
       $stm->bindParam(2,$user->getPassword());
       $stm->execute();
       $result = $stm->fetchAll();
-      return json_encode($result);
+      return $result;
     } catch (PDOException $e) {
       die($e->getMessage());
     } finally {

@@ -1,7 +1,7 @@
 $(".admin_news").ready(function(){
   $.ajax({
     method:   "POST",
-    url:      "./../../../php/controller/getAllNews.php"
+    url:      "./../../server/php/controller/getAllNews.php"
   }).done(function(msg){
     $.each(JSON.parse(msg),function(key,val){
       $("table#tableNews>tbody").append(''+
@@ -22,7 +22,7 @@ $(".admin_news").ready(function(){
     let id = $(e.currentTarget).attr("id");
     $.ajax({
       method:   "POST",
-      url:      "./../../../php/controller/getNews.php",
+      url:      "./../../server/php/controller/getNews.php",
       data:     {"id": id}
     }).done(function(msg){
       let obj = JSON.parse(msg);
@@ -36,7 +36,7 @@ $(".admin_news").ready(function(){
     });
   });
 
-  $("form.newsForm").validate({
+  /*$("form.newsForm").validate({
     debug: true,
     rules{
       id:{},
@@ -44,5 +44,5 @@ $(".admin_news").ready(function(){
       description{},
       content:{},
     }
-  })
+  })*/
 });

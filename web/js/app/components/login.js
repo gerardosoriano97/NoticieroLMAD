@@ -31,11 +31,11 @@ $('form.loginForm').validate({
     let json = JSON.stringify(jsonObj);
     $.ajax({
       method:   "POST",
-      url:      "./../php/controller/login.php",
+      url:      "./../../server/php/controller/login.php",
       data:     {"json": json}
     }).done(function(msg){
       if (msg == "success") {
-        alert('jalo we');
+        window.location = 'homepage.html';
       }
     });
   }
