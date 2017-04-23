@@ -1,0 +1,24 @@
+table.admin_table{
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  background-color: white;
+  >thead{
+    >tr{
+      background-color: $colorContempt;
+      font-family: _Moderne_Sans_;
+      color: white;
+      border-radius: 1px;
+      >th{
+        padding: 5px;
+      }
+    }
+  }
+  >tbody{
+    >tr{
+      >td{
+
+      }
+    }
+  }
+}

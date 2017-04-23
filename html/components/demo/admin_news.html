@@ -13,18 +13,34 @@
     <div class="content admin_news">
       <div class="blocks">
         <form class="newsForm" method="post">
+          <input type="hidden" name="id" value="null">
           <input type="text" name="title" placeholder="Titulo *">
           <input type="text" name="description" placeholder="description *">
           <textarea name="content" rows="8" cols="80"></textarea>
-          <select class="section">
+          <select name="section">
             <option value="1">Deportes</option>
             <option value="2">Espectaculo</option>
             <option value="3">Politica</option>
             <option value="4">Cine</option>
           </select>
+          <input type="submit" name="send" value="Submit">
+          <input type="reset" name="reset" value="Clear">
         </form>
+        <table id="tableNews" class="admin_table">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>titulo</th>
+              <th>descripción</th>
+              <th>sección</th>
+              <th>estilo</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
       </div>
     </div>
-    <script src="../js/dist/bundle.js"></script>
+    <script src="./../../../js/dist/bundle.js"></script>
   </body>
 </html>

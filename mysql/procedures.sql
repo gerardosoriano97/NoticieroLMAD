@@ -122,6 +122,7 @@ delimiter ;
 
 delimiter $$
 create or replace procedure sp_setNews(
+	in _id int unsigned,
 	in _title varchar(100),
 	in _description varchar(255),
 	in _content text,
@@ -130,6 +131,7 @@ create or replace procedure sp_setNews(
     in _fk_idStyle int unsigned
 )
 begin
+	if _id = 0 then
 	insert into nl_news set
 		title = _title,
         description = _description,
@@ -137,11 +139,21 @@ begin
         fk_idUser = _fk_idUser,
         fk_idSection = _fk_idSection,
         fk_idStyle = _fk_idStyle;
+	else
+    update nl_news set
+		title = _title,
+        description = _description,
+        content = _content,
+        fk_idUser = _fk_idUser,
+        fk_idSection = _fk_idSection,
+        fk_idStyle = _fk_idStyle
+	where id = _id;
+    end if;
 end $$
 delimiter ;
 
 delimiter $$
-create or replace procedure sp_getNews(
+create or replace procedure sp_getNewsReleased(
 	in _idNews int unsigned
 )
 begin
@@ -150,6 +162,15 @@ begin
     if(_status = 1) then
 		select title, description, content, releaseDate, name, lastName from vw_newsByUser where idNews = _idNews;
 	end if;
+end $$
+delimiter ;
+
+delimiter $$
+create or replace procedure sp_getNews(
+	in _idNews int unsigned
+)
+begin
+	select title, description, content, releaseDate, name, lastName, state, idSection from vw_newsByUser where idNews = _idNews;
 end $$
 delimiter ;
 
@@ -168,6 +189,14 @@ create or replace procedure sp_getSectionNews(
 begin
 	select idNews,title,description,name,lastName,idStyle,styleName from vw_newsByUser
 	where idSection = _idSection order by idNews desc limit 30;
+end $$
+delimiter ;
+
+delimiter $$
+create or replace procedure sp_getAllNews()
+begin
+	select idNews,title,description,content,idSection,sectionName,idStyle,styleName 
+    from vw_newsByUser order by idNews desc;
 end $$
 delimiter ;
 
@@ -207,3 +236,4 @@ begin
     from vw_commentInComment where idCommentPattern = _idCommentPattern order by publicationChild desc;
 end $$
 delimiter ;
+
