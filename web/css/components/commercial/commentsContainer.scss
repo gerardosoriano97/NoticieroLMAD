@@ -1,0 +1,53 @@
+body#commercial>div.content>div.center>div.commentsContainer{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  >div.comment{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    position: relative;
+    >div.userImage{
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      text-align: center;
+      border-radius: 50%;
+      >img{
+        width: auto;
+        height: auto;
+        min-height: 100%;
+        max-height: 100%;
+      }
+    }
+    >div.square{
+      position: absolute;
+      background-color: white;
+      width: 30px;
+      height: 30px;
+      left: 115px;
+      top: 35px;
+      border-bottom: 1px solid $black;
+      border-left: 1px solid $black;
+      transform: rotate(45deg);
+      outline: none;
+    }
+    >div.commentInfo{
+      flex-grow: 1;
+      padding: 10px 10px 10px 20px;
+      outline: none;
+      border: 1px solid $black;
+      margin-left: 30px;
+      >h1,>h2{
+        font: 15px _Swiss_721_;
+        margin: 0;
+      }
+      >h1{
+        color: $redLight;
+        margin-bottom: 10px;
+        font-size: 20px;
+      }
+    }
+  }
+}
