@@ -1,0 +1,17 @@
+body#admin>div[class^="content"]>div.index{
+  >h1,>h2{
+    font-family: "Century Gothic";
+    color: $firstColor;
+  }
+  h1{
+    font-size: 40px;
+  }
+  h2{
+    font-size: 30px;
+    font-weight: 100;
+  }
+  p{
+    font-family: "Century Gothic";
+    font-size: 15px;
+  }
+}

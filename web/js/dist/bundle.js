@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10330,19 +10330,19 @@ return jQuery;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {$(".admin_news").ready(function(){
+/* WEBPACK VAR INJECTION */(function($) {$(".news").ready(function(){
   $.ajax({
     method:   "POST",
-    url:      "./../../server/php/controller/getAllNews.php"
+    url:      "./../../../server/php/controller/getAllNews.php"
   }).done(function(msg){
     $.each(JSON.parse(msg),function(key,val){
       $("table#tableNews>tbody").append(''+
         '<tr id='+val.idNews+'>'+
-          '<th>'+val.idNews+'</th>'+
-          '<th>'+val.title+'</th>'+
-          '<th>'+val.description+'</th>'+
-          '<th>'+val.sectionName+'</th>'+
-          '<th>'+val.styleName+'</th>'+
+          '<td>'+val.idNews+'</td>'+
+          '<td>'+val.title+'</td>'+
+          '<td>'+val.description+'</td>'+
+          '<td>'+val.sectionName+'</td>'+
+          '<td>'+val.styleName+'</td>'+
         '</tr>'
       );
     });
@@ -10351,10 +10351,11 @@ return jQuery;
   });
 
   $("table#tableNews > tbody").on("click","tr", function(e){
+    $('body#admin>div[class^="modal"]').toggleClass("modal-hide modal-show");
     let id = $(e.currentTarget).attr("id");
     $.ajax({
       method:   "POST",
-      url:      "./../../server/php/controller/getNews.php",
+      url:      "./../../../server/php/controller/getNews.php",
       data:     {"id": id}
     }).done(function(msg){
       let obj = JSON.parse(msg);
@@ -10383,6 +10384,21 @@ return jQuery;
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {$('body#commercial>div.content').ready(function(){
+  $('div.outstanding').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    //autoplay: true,
+    autoplaySpeed: 2000
+  });
+});
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$('form.loginForm').validate({
@@ -10431,7 +10447,7 @@ return jQuery;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$("form.registerForm").validate({
@@ -10495,7 +10511,7 @@ return jQuery;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -12077,7 +12093,7 @@ return $;
 }));
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -14978,19 +14994,40 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {__webpack_require__(5);
-__webpack_require__(4);
+/* WEBPACK VAR INJECTION */(function($) {__webpack_require__(6);
+__webpack_require__(5);
 $.validator.addMethod("regx", function(value, element, regexpr) {
     return regexpr.test(value);
 });
 
 $(document).ready(function(){
-  __webpack_require__(2);
-  __webpack_require__(3);
-  __webpack_require__(1);
+  var pathname = $(location).attr('pathname');
+  switch (pathname) {
+    case '/proyectos/PF_BDM/web/html/login.html':
+    __webpack_require__(3);
+      break;
+    case '/proyectos/PF_BDM/web/html/register.html':
+    __webpack_require__(4);
+      break;
+    case '/proyectos/PF_BDM/web/html/homepage.html':
+    __webpack_require__(2);
+      break;
+    case '/proyectos/PF_BDM/web/html/admin/news.html':
+    __webpack_require__(1);
+      break;
+  }
+}).keydown(function(e){
+  switch (e.which) {
+    case 27:
+    if ($('body#admin>div[class^="modal"]').attr('class') == 'modal-show') {
+      $('body#admin>div[class^="modal"]').toggleClass('modal-show modal-hide');
+    }
+      break;
+    default: return;
+  }
 });
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))

@@ -1,16 +1,16 @@
-$(".admin_news").ready(function(){
+$(".news").ready(function(){
   $.ajax({
     method:   "POST",
-    url:      "./../../server/php/controller/getAllNews.php"
+    url:      "./../../../server/php/controller/getAllNews.php"
   }).done(function(msg){
     $.each(JSON.parse(msg),function(key,val){
       $("table#tableNews>tbody").append(''+
         '<tr id='+val.idNews+'>'+
-          '<th>'+val.idNews+'</th>'+
-          '<th>'+val.title+'</th>'+
-          '<th>'+val.description+'</th>'+
-          '<th>'+val.sectionName+'</th>'+
-          '<th>'+val.styleName+'</th>'+
+          '<td>'+val.idNews+'</td>'+
+          '<td>'+val.title+'</td>'+
+          '<td>'+val.description+'</td>'+
+          '<td>'+val.sectionName+'</td>'+
+          '<td>'+val.styleName+'</td>'+
         '</tr>'
       );
     });
@@ -19,10 +19,11 @@ $(".admin_news").ready(function(){
   });
 
   $("table#tableNews > tbody").on("click","tr", function(e){
+    $('body#admin>div[class^="modal"]').toggleClass("modal-hide modal-show");
     let id = $(e.currentTarget).attr("id");
     $.ajax({
       method:   "POST",
-      url:      "./../../server/php/controller/getNews.php",
+      url:      "./../../../server/php/controller/getNews.php",
       data:     {"id": id}
     }).done(function(msg){
       let obj = JSON.parse(msg);

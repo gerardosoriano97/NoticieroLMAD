@@ -1,0 +1,33 @@
+body#admin>div[class^="content"]>div table.table{
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  border-collapse: collapse;
+  >thead{
+    >tr{
+      background-color: $firstColor;
+      font-family: "Century Gothic";
+      color: white;
+      border-radius: 1px;
+      >th{
+        padding: 5px;
+        font-weight: 100;
+        text-align: left;
+      }
+    }
+  }
+  >tbody{
+    cursor: pointer;
+    >tr{
+      font-family: "Century Gothic";
+      color: $firstColor;
+      &:hover{
+        background-color: $secondColor;
+      }
+      >td{
+        padding: 5px;
+        border-bottom: solid 1px $firstColor;
+      }
+    }
+  }
+}

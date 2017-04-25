@@ -1,0 +1,43 @@
+body#admin>div[class^="content"]>div>div.section{
+  width: $small;
+  min-width: $small;
+  border-top: 2px solid $firstColor;
+  margin: 18px 0;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-wrap: wrap;
+  @include fiveColumn{
+    max-width: $xLarge;
+    min-width: $xLarge;
+  };
+  @include fourColumn{
+    max-width: $large;
+    min-width: $large;
+  };
+  @include threeColumn{
+    max-width: $medium;
+    min-width: $medium;
+  };
+  @include twoColumn{
+    max-width: $small;
+    min-width: $small;
+  };
+  @include oneColumn{
+    max-width: $small;
+    min-width: $small;
+  };
+  >label{
+    background-color: $thirdColor;
+    font: bold 25px "Century Gothic";
+    margin: 0;
+    color: $firstColor;
+    transform: translateY(-60%);
+    padding-right: 10px;
+    position: absolute;
+  }
+  >div.card{
+    width: 100%;
+    margin-top: 18px;
+    display: flex;
+  }
+}

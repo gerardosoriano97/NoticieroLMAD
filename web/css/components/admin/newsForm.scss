@@ -1,0 +1,37 @@
+body#admin>div[class^="modal"]>div.box>form.newsForm{
+  background-color: $firstColor;
+  box-sizing: border-box;
+  padding: 10px;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  >input[name="title"], >input[name="description"],>textarea[name="content"],>select[name="section"]{
+    width: 100%;
+    padding: 10px;
+    font: 15px "Century Gothic";
+    box-sizing: border-box;
+    background-color: $thirdColor;
+    border: 0;
+    margin-bottom: 10px;
+  }
+  >textarea[name="content"]{
+    resize: none;
+  }
+  >select[name="section"]{
+    width: 50%;
+    margin: 0;
+  }
+  >input[name="send"],>input[name="reset"]{
+    width: 100px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 0;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  >input[name="send"]{
+    right: 120px;
+  }
+}

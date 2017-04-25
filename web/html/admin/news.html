@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>N E W S</title>
+    <link rel="stylesheet" href="../../css/dist/main.min.css">
+  </head>
+  <body id="admin">
+    <div class="menu">
+      <h1>Admin</h1>
+      <div class="userInfo">
+        <div class="profilePicture">
+          <img src="../../resources/images/profile.jpg" alt="Imagen de perfil">
+        </div>
+        <h1>
+          Bienvenido, <br>
+          <span class="username">gerardosoriano97</span>
+        </h1>
+      </div>
+      <ul class="sections">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="news.html">Noticias</a></li>
+        <li><a href="sections.html">Secciones</a></li>
+        <li><a href="multimedia.html">Multimedia</a></li>
+        <li><a href="users.html">Usuarios</a></li>
+        <li><a href="../homepage.html">Salir</a></li>
+      </ul>
+    </div>
+    <div class="header">
+      <div class="button">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        <h1>Menú</h1>
+      </div>
+      <div class="userInfo">
+        <div class="profilePicture">
+          <img src="../../resources/images/profile.jpg" alt="Imagen de perfil">
+        </div>
+        <h1>gerardosoriano97</h1>
+      </div>
+    </div>
+    <div class="content">
+      <div class="news">
+        <div class="section">
+          <label>Noticias</label>
+          <div class="card">
+            <table id="tableNews" class="table">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>titulo</th>
+                  <th>descripción</th>
+                  <th>sección</th>
+                  <th>estilo</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-hide">
+      <div class="box">
+        <form class="newsForm" method="post">
+          <input type="hidden" name="id" value="null">
+          <input type="text" name="title" placeholder="Titulo *">
+          <input type="text" name="description" placeholder="Description *">
+          <textarea name="content" rows="8" cols="80" placeholder="Contenido *"></textarea>
+          <select name="section">
+            <option value="1">Deportes</option>
+            <option value="2">Espectaculo</option>
+            <option value="3">Politica</option>
+            <option value="4">Cine</option>
+          </select>
+          <input type="submit" name="send" value="Submit">
+          <input type="reset" name="reset" value="Clear">
+        </form>
+      </div>
+    </div>
+    <script src="../../js/dist/bundle.js"></script>
+  </body>
+</html>

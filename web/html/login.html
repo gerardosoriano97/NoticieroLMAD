@@ -3,15 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>Inicia Sesión</title>
-    <link rel="stylesheet" href="../css/main/_main.css">
+    <link rel="stylesheet" href="../css/dist/main.min.css">
   </head>
-  <body>
+  <body id="loginRegister">
+    <img src="../resources/images/background.jpg" alt="Fondo del login y registro" role="background">
     <div class="formContainer">
+      <div class="logo">
+        <img src="../resources/images/logoStroke.png" alt="Logo de la empresa">
+      </div>
       <form class="loginForm" method="post">
+        <div class="links">
+          <a href="login.html">Login</a>
+          <a href="register.html">Registro</a>
+        </div>
         <input class="toJson" type="email" name="email" placeholder="Tu Correo *">
         <input class="toJson" type="password" name="password" placeholder="Tu Contraseña *">
         <input type="submit" name="send" value="Submit">
-        <span>¿No tienes cuenta? <a href="register.html">¡Registrate aquí!</a></span>
+        <span>¿Olvidaste tu contraseña?</span>
       </form>
     </div>
     <script src="../js/dist/bundle.js"></script>

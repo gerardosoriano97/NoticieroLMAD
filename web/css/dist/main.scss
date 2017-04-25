@@ -1,0 +1,20 @@
+@import "../components/global/colors.scss";
+@import "../components/global/media_queries.scss";
+@import "../components/global/fonts.scss";
+@import "../components/global/global.scss";
+//Aqui van los de la página comercial
+@import "../components/commercial/header.scss";
+@import "../components/commercial/content.scss";
+@import "../components/commercial/principalForms.scss";
+@import "../components/commercial/outstanding.scss";
+@import "../components/commercial/section.scss";
+@import "../components/commercial/news.scss";
+//Aqui van los del admin
+@import "../components/admin/menu.scss";
+@import "../components/admin/header.scss";
+@import "../components/admin/table.scss";
+@import "../components/admin/content.scss";
+@import "../components/admin/index.scss";
+@import "../components/admin/section.scss";
+@import "../components/admin/modal.scss";
+@import "../components/admin/newsForm.scss";

@@ -1,0 +1,10 @@
+body#commercial>div.content>div.center>div.section{
+  border-top: 1px solid $black;
+  width: 100%;
+  >label{
+    position: absolute;
+    transform: translateY(-55%);
+    background-color: white;
+    font: 30px _Swiss_721_;
+  }
+}

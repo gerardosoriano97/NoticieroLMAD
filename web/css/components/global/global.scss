@@ -1,7 +1,21 @@
 body{
-  background-color: $colorPalour;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+  overflow: initial;
+  &#loginRegister{
+    overflow: hidden;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  &#admin{
+    padding: 0;
+    margin: 0;
+    background-color: $thirdColor;
+  }
   *{
     transition: box-shadow 0.3s ease-in-out;
   }
@@ -13,77 +27,10 @@ body{
       text-decoration: underline;
     }
   }
-  >[class^="header"]{
-    width: 100%;
-    height: 200px;
-    background-color: $colorLinseed;
-    position: fixed;
-    z-index: 10;
-  }
-  >[class$="_admin"]{
-
-  }
-  >div.content{
-    width: 100%;
-    height: 10000px;
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    top: 200px;
-    justify-content: center;
-    >div.blocks{
-      background-color: $colorPrint;
-      height: 10000px - 200px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-content: flex-start;
-      padding-top: 10px;
-      @include fourColumn{
-        max-width: $xLarge;
-        min-width: $xLarge;
-      };
-      @include threeColumn{
-        max-width: $large;
-        min-width: $large;
-      };
-      @include twoColumn{
-        max-width: $medium;
-        min-width: $medium;
-      };
-      @include oneColumn{
-        max-width: $small;
-        min-width: $small;
-      };
-      >[class^="block"]{
-        width: 300px;
-        height: 380px;
-        margin-bottom: 15px;
-        background-color: $colorZazz;
-      }
-      >[class$="_2"]{
-        width: 618px;
-      }
-      >div{
-        width: 300px;
-        min-width: 300px;
-        max-width: 300px;
-        height: 380px;
-        min-height: 380px;
-        max-height: 380px;
-        margin-bottom: 15px;
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        overflow: hidden;
-        box-sizing: border-box;
-        cursor: pointer;
-      }
-    }
-    >div.footer{
-      width: 100%;
-      height: 200px;
-      background-color: $colorContempt;
-    }
+  >img[role="background"]{
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    position: absolute;
   }
 }

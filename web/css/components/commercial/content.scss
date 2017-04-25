@@ -1,0 +1,35 @@
+body#commercial>div.content{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 50px 0 0;
+  justify-content: center;
+  >div.center{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    padding-top: 10px;
+    @include fiveColumn{
+      max-width: $xxLarge;
+      min-width: $xxLarge;
+    }
+    @include fourColumn{
+      max-width: $xLarge;
+      min-width: $xLarge;
+    };
+    @include threeColumn{
+      max-width: $large;
+      min-width: $large;
+    };
+    @include twoColumn{
+      max-width: $medium;
+      min-width: $medium;
+    };
+    @include oneColumn{
+      max-width: $small;
+      min-width: $small;
+    }
+  }
+}

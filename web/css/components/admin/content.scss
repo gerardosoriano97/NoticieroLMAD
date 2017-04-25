@@ -1,0 +1,15 @@
+body#admin>div[class^="content"]{
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  padding: 50px 10px 10px 310px;
+  box-sizing: border-box;
+  z-index: 1;
+  >div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
