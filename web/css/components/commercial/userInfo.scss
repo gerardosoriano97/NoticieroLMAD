@@ -1,0 +1,17 @@
+body#commercial>div.content>div.center>form.userInfo{
+  width: 100%;
+  border: 1px solid $black;
+  box-shadow: 0 0 7px $golden;
+  padding: 10px;
+  >input{
+    margin-left: 15px;
+    padding: 10px;
+    border: 0;
+    border-bottom: 1px solid $black;
+    font: 20px _Swiss_721_;
+    display: block;
+  }
+  >h1{
+    font: italic bold 25px _Swiss_721_;
+  }
+}

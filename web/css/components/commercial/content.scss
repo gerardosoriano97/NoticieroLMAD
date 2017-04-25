@@ -5,6 +5,7 @@ body#commercial>div.content{
   position: relative;
   padding: 50px 0 0;
   justify-content: center;
+  align-content: flex-start;
   >div.center{
     display: flex;
     flex-wrap: wrap;

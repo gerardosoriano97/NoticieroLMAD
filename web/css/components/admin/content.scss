@@ -11,5 +11,8 @@ body#admin>div[class^="content"]{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    &.index{
+      display: block;
+    }
   }
 }

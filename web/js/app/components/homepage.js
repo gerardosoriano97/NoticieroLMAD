@@ -2,7 +2,8 @@ $('body#commercial>div.content').ready(function(){
   $('div.outstanding').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    //autoplay: true,
+    dots: true,
+    autoplay: true,
     autoplaySpeed: 2000
   });
 });

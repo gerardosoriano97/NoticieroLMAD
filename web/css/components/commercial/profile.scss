@@ -1,0 +1,62 @@
+body#commercial>div.content>div.profile{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+  align-content: flex-start;
+  overflow: hidden;
+  position: relative;
+  max-height: 400px;
+  >div.cover{
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    >img{
+      width: auto;
+      height: auto;
+      min-width: 100%;
+      max-width: 100%;
+    }
+  }
+  >div.down{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    transform: translateY(-50%);
+    >div.user{
+      display: flex;
+      align-items: flex-end;
+      >div.userImage{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        text-align: center;
+        >img{
+          width: auto;
+          height: auto;
+          min-height: 100%;
+          max-height: 100%;
+        }
+      }
+      >h1{
+        font: italic 30px _Swiss_721_;
+      }
+    }
+    >button[name="edit"]{
+      padding: 10px;
+      width: 150px;
+      background-color: $yellow;
+      display: flex;
+      justify-content: space-around;
+      font: 20px _Swiss_721_;
+      color: $black;
+      border: 0;
+      &:hover{
+        box-shadow: inset 0 0 7px $golden;
+      }
+    }
+  }
+}
