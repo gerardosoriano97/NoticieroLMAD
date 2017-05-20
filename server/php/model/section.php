@@ -7,11 +7,6 @@ class SectionModel
   private $description;
 
   function __construct(){}
-  function __construct($id,$name,$description){
-    $this->id = $id;
-    $this->name = $name;
-    $this->description = $description;
-  }
 
   function getId(){ return $this->id; }
   function setId($id){ $this->id = $id; }

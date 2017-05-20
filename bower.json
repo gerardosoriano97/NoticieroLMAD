@@ -1,0 +1,24 @@
+{
+  "name": "fake_news",
+  "description": "proyecto de un noticiero",
+  "main": "gulpfile.js",
+  "authors": [
+    "gerardosoriano97@gmail.com"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/GerardoSoriano/NoticieroLMAD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/resources/libs",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^3.2.1",
+    "slick-carousel": "^1.6.0",
+    "jquery-validation": "^1.16.0",
+    "font-awesome": "^4.7.0"
+  }
+}

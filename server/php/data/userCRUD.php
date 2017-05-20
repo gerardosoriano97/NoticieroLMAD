@@ -7,6 +7,22 @@ class UserMethods
 
   function __construct(){}
 
+  function getAllUsers(){
+    $pdo = new Connection();
+    $conn = $pdo->getConnection();
+    try {
+      $result = array();
+      $stm = $conn->prepare('call sp_getAllUsers()');
+      $stm->execute();
+      $result = $stm->fetchAll();
+      return json_encode($result);
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    } finally {
+      $conn = null;
+      $pdo->closeConnection();
+    }
+  }
   function setUser($user){
     $pdo = new Connection();
     $conn = $pdo->getConnection();
@@ -21,6 +37,39 @@ class UserMethods
       $stm->bindParam(7,$user->getCover());
       $stm->bindParam(8,$user->getAvatar());
       $stm->bindParam(9,$user->getFKidType());
+      $result = $stm->execute();
+      return $result;
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    } finally {
+      $conn = null;
+      $pdo->closeConnection();
+    }
+  }
+  function getUser($user){
+    $pdo = new Connection();
+    $conn = $pdo->getConnection();
+    try {
+      $result = array();
+      $stm = $conn->prepare('call sp_getUser(?)');
+      $stm->bindParam(1,$user->getId());
+      $stm->execute();
+      $result = $stm->fetchAll();
+      return json_encode($result);
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    } finally {
+      $conn = null;
+      $pdo->closeConnection();
+    }
+  }
+  function dropUser($user){
+    $pdo = new Connection();
+    $conn = $pdo->getConnection();
+    try {
+      $result = array();
+      $stm = $conn->prepare('call sp_dropUser(?)');
+      $stm->bindParam(1,$user->getId());
       $result = $stm->execute();
       return $result;
     } catch (PDOException $e) {

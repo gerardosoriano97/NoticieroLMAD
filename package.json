@@ -1,0 +1,24 @@
+{
+  "name": "fake_news",
+  "version": "1.0.0",
+  "description": "proyecto de un noticiero",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GerardoSoriano/NoticieroLMAD.git"
+  },
+  "author": "gerardosoriano97@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GerardoSoriano/NoticieroLMAD/issues"
+  },
+  "homepage": "https://github.com/GerardoSoriano/NoticieroLMAD#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.11",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  }
+}

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10386,6 +10386,29 @@ return jQuery;
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function($) {$('body#commercial>div.header').ready(function(){
+  $.ajax({
+    method:   "POST",
+    url:      "./../../server/php/controller/getAllSections.php"
+  }).done(function(msg){
+    $.each(JSON.parse(msg),function(key,val){
+      $("ul.sections").append(''+
+        '<li><a href="homepage.html?idSection='+val.idSection+'">'+
+          val.sectionName+
+        '</a></li>'
+      );
+    });
+  }).fail(function(jqXHR, textStatus){
+    alert("Request failed: " + textStatus);
+  });
+});
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
 /* WEBPACK VAR INJECTION */(function($) {$('body#commercial>div.content').ready(function(){
   $('div.outstanding').slick({
     slidesToShow: 1,
@@ -10399,7 +10422,7 @@ return jQuery;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$('form.loginForm').validate({
@@ -10448,7 +10471,7 @@ return jQuery;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$("form.registerForm").validate({
@@ -10512,7 +10535,7 @@ return jQuery;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -12094,7 +12117,7 @@ return $;
 }));
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -14995,26 +15018,27 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {__webpack_require__(6);
-__webpack_require__(5);
+/* WEBPACK VAR INJECTION */(function($) {__webpack_require__(7);
+__webpack_require__(6);
 $.validator.addMethod("regx", function(value, element, regexpr) {
     return regexpr.test(value);
 });
 
 $(document).ready(function(){
   var pathname = $(location).attr('pathname');
+  __webpack_require__(2)
   switch (pathname) {
     case '/proyectos/PF_BDM/web/html/login.html':
-    __webpack_require__(3);
-      break;
-    case '/proyectos/PF_BDM/web/html/register.html':
     __webpack_require__(4);
       break;
+    case '/proyectos/PF_BDM/web/html/register.html':
+    __webpack_require__(5);
+      break;
     case '/proyectos/PF_BDM/web/html/homepage.html':
-    __webpack_require__(2);
+    __webpack_require__(3);
       break;
     case '/proyectos/PF_BDM/web/html/admin/news.html':
     __webpack_require__(1);

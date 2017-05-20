@@ -6,6 +6,7 @@ $.validator.addMethod("regx", function(value, element, regexpr) {
 
 $(document).ready(function(){
   var pathname = $(location).attr('pathname');
+  require('./components/header.js')
   switch (pathname) {
     case '/proyectos/PF_BDM/web/html/login.html':
     require('./components/login.js');
