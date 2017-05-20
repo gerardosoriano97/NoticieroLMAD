@@ -1,3 +1,4 @@
 /web/resources/libs/*
 /web/resources/references/*
+/server/php/vendor/*
 /node_modules/*
