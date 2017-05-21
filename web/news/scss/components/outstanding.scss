@@ -68,38 +68,41 @@ body#commercial>div.content>div.center>div.outstanding{
     height: 300px;
     >div.slick-track{
       height: 100%;
-      >div.news{
+      >a{
         height: 100%;
-        padding: 10px;
-        box-sizing: border-box;
-        >div.infoCard{
-          background-color: $secondColor;
-          box-sizing: border-box;
-          width: 100%;
+        >div.news{
           height: 100%;
-          overflow: hidden;
-          position: relative;
-          display: flex;
-          >img{
-            width: auto;
-            height: auto;
-            min-width: 100%;
-            position: absolute;
-          }
-          h1{
+          padding: 10px;
+          box-sizing: border-box;
+          >div.infoCard{
+            background-color: $secondColor;
+            box-sizing: border-box;
             width: 100%;
-            min-height: 75px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            align-self: flex-end;
-            margin: 0;
+            height: 100%;
+            overflow: hidden;
             position: relative;
-            z-index: 1;
-            font: 20px _Swiss_721_;
-            color: white;
-            letter-spacing: 2px;
-            background: linear-gradient(to bottom, $transparent , $black)
+            display: flex;
+            >img{
+              width: auto;
+              height: auto;
+              min-width: 100%;
+              position: absolute;
+            }
+            h1{
+              width: 100%;
+              min-height: 75px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              align-self: flex-end;
+              margin: 0;
+              position: relative;
+              z-index: 1;
+              font: 20px _Swiss_721_;
+              color: white;
+              letter-spacing: 2px;
+              background: linear-gradient(to bottom, $transparent , $black)
+            }
           }
         }
       }

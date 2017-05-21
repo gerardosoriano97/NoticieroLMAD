@@ -4,26 +4,18 @@ create database noticiero_lmad;
 
 use noticiero_lmad;
 
-create table nl_type(
-idType int unsigned not null auto_increment,
-typeName varchar(20) not null,
-typeDescription varchar(150),
-primary key(idType)
-);
-
 create table nl_user(
 idUser int unsigned not null auto_increment,
 name varchar(40) not null,
 lastName varchar(40) not null,
-email varchar(60) not null,
+email varchar(60) not null unique,
 password varchar(255), 
 phoneNumber varchar(15),
 birthDate date,
-avatar varchar(100),
-cover varchar(100),
-fk_idType int unsigned not null default 4,
-primary key(idUser),
-foreign key(fk_idType) references nl_type(idType)
+avatar blob,
+cover blob,
+type enum('administrador','reportero','registrado','anónimo') default 'anónimo',
+primary key(idUser)
 );
 
 create table nl_section(
@@ -33,13 +25,6 @@ sectionDescription varchar(150),
 primary key(idSection)
 );
 
-create table nl_style(
-idStyle int unsigned not null auto_increment,
-styleName varchar(20) not null,
-styleDescription varchar(150),
-primary key(idStyle)
-);
-
 create table nl_news(
 idNews int unsigned not null auto_increment,
 title varchar(100) not null,
@@ -47,13 +32,12 @@ description varchar(255) not null,
 content text not null,
 state bit(1) not null default 0,
 releaseDate datetime,
+style enum('destacada','normal') not null default 'normal',
 fk_idUser int unsigned not null,
 fk_idSection int unsigned not null,
-fk_idStyle int unsigned not null,
 primary key(idNews),
 foreign key(fk_idUser) references nl_user(idUser),
-foreign key(fk_idSection) references nl_section(idSection),
-foreign key(fk_idStyle) references nl_style(idStyle)
+foreign key(fk_idSection) references nl_section(idSection)
 );
 
 create table nl_comment(

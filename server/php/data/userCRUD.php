@@ -2,7 +2,7 @@
 include_once('connection.php');
 include_once(dirname(__DIR__).'/model/user.php');
 
-class UserMethods
+class UserCRUD
 {
 
   function __construct(){}

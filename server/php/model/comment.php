@@ -1,6 +1,6 @@
 <?php
 
-class CommentModel
+class Comment
 {
   private $id;
   private $comment;

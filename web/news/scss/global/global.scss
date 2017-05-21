@@ -20,6 +20,7 @@ body{
     transition: box-shadow 0.3s ease-in-out;
   }
   a{
+    color: inherit;
     &:link{
       text-decoration: none;
     }

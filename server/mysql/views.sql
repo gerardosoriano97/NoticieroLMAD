@@ -1,15 +1,14 @@
 #VIEWS
+use noticiero_lmad;
 
-create or replace view vw_newsByUser as
+create or replace view vw_newsInfo as
 select
 	idUser, name, lastName,  
-	idNews, title, description, content, state, releaseDate, 
-    idSection, sectionName, 
-    idStyle, styleName
+	idNews, title, description, content, state, releaseDate, style,
+    idSection, sectionName
 from nl_news
 inner join nl_user on fk_idUser = idUser
 inner join nl_section on fk_idSection = idSection
-inner join nl_style on fk_idStyle = idStyle
 order by idUser desc, idNews desc;
 
 create or replace view vw_commentInNews as

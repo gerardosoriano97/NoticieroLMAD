@@ -1,6 +1,6 @@
 <?php
 
-class SectionModel
+class Section
 {
   private $id;
   private $name;

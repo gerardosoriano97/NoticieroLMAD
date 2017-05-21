@@ -1,6 +1,6 @@
 <?php
 
-class MultimediaModel
+class Multimedia
 {
   private $id;
   private $path;

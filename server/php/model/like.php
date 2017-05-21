@@ -1,6 +1,6 @@
 <?php
 
-class LikeModel
+class Like
 {
   private $id;
   private $fk_idUser;
@@ -16,7 +16,7 @@ class LikeModel
   function setFKidUser($fk_idUser){ $this->fk_idUser = $fk_idUser; }
 
   function getFKidNews(){ return $this->fk_idNews; }
-  function setFKidNews($fk_idNews){ $this->fk_idNews = $fk_idNews; }  
+  function setFKidNews($fk_idNews){ $this->fk_idNews = $fk_idNews; }
 }
 
  ?>

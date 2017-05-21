@@ -5,7 +5,7 @@
 delimiter $$
 create or replace procedure sp_getAllUsers()
 begin
-	select idUser, name, lastName, email, password, phoneNumber, birthDate, avatar, cover, fk_idType 
+	select idUser, name, lastName, email, fn_decrypt(password), phoneNumber, birthDate, avatar, cover, fk_idType 
     from nl_user order by idUser asc;
 end$$
 delimiter ;
@@ -28,7 +28,7 @@ begin
 		name = _name,
         lastName = _lastName,
         email = _email,
-        password = _password,
+        password = fn_encrypt(_password),
         phoneNumber = _phoneNumber,
         birthDate = _birthDate,
         avatar = _avatar,
@@ -38,7 +38,7 @@ begin
     update nl_user set
 		name = _name,
         lastName = _lastName,
-        password = _password,
+        password = fn_encrypt(_password),
         phoneNumber = _phoneNumber,
         birthDate = _birthDate,
         avatar = _avatar,
@@ -54,7 +54,7 @@ create or replace procedure sp_getUser(
 	in _idUser int unsigned
 )
 begin
-	select name, lastName, email, password, phoneNumber, birthDate, avatar, cover, fk_idType from nl_user where idUser = _idUser;
+	select name, lastName, email, fn_decrypt(password), phoneNumber, birthDate, avatar, cover, fk_idType from nl_user where idUser = _idUser;
 end$$
 delimiter ;
 
@@ -74,9 +74,10 @@ create or replace procedure sp_login(
 )
 begin
 	select idUser, name, lastName, phoneNumber, birthDate, avatar, cover, fk_idType
-    from nl_user where email = _email and password = _password;
+    from nl_user where email = _email and password = fn_encrypt(_password);
 end $$
 delimiter ;
+
 /*Section procedures*/
 
 delimiter $$
@@ -153,19 +154,6 @@ end $$
 delimiter ;
 
 delimiter $$
-create or replace procedure sp_getNewsReleased(
-	in _idNews int unsigned
-)
-begin
-	declare _status bit(1);
-    select state into _status from vw_newsByUser where idNews = _idNews;
-    if(_status = 1) then
-		select title, description, content, releaseDate, name, lastName from vw_newsByUser where idNews = _idNews;
-	end if;
-end $$
-delimiter ;
-
-delimiter $$
 create or replace procedure sp_getNews(
 	in _idNews int unsigned
 )
@@ -175,20 +163,33 @@ end $$
 delimiter ;
 
 delimiter $$
-create or replace procedure sp_getRecentNews()
+create or replace procedure sp_getRecentNews(
+	in _style enum('destacada','normal'),
+    in _start int unsigned
+)
 begin
-	select idNews,title,description,name,lastName,idSection,sectionName,idStyle,styleName 
-    from vw_newsByUser order by idNews desc limit 30;
+	select idNews,title,description, style, fn_hoursAgo(releaseDate) as hours, releaseDate,
+			idUser, fn_fullname(name, lastName) as fullname,
+			idSection,sectionName
+    from vw_newsInfo 
+    where state = 1 and style = _style
+    order by idNews desc limit _start, 15;
 end $$
 delimiter ;
 
 delimiter $$
-create or replace procedure sp_getSectionNews(
-	in _idSection int unsigned
+create or replace procedure sp_getRecentNewsBySection(
+	in _idSection int unsigned,
+    in _style enum('destacada','normal'),
+    in _start int unsigned
 )
 begin
-	select idNews,title,description,name,lastName,idStyle,styleName from vw_newsByUser
-	where idSection = _idSection order by idNews desc limit 30;
+	select idNews,title,description, style, fn_hoursAgo(releaseDate) as hours, releaseDate,
+			idUser, fn_fullname(name, lastName) as fullname,
+			idSection,sectionName
+    from vw_newsInfo 
+    where state = 1 and idSection = _idSection and style = _style
+    order by idNews desc limit _start, 15;
 end $$
 delimiter ;
 

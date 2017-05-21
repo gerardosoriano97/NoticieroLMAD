@@ -1,6 +1,6 @@
 <?php
 
-class NewsModel
+class News
 {
   private $id;
   private $title;
@@ -8,9 +8,9 @@ class NewsModel
   private $content;
   private $state;
   private $releaseDate;
+  private $style;
   private $fk_idUser;
   private $fk_idSection;
-  private $fk_idStyle;
 
   function __construct(){
 
@@ -35,14 +35,14 @@ class NewsModel
   function getReleaseDate(){ return $this->releaseDate; }
   function setReleaseDate($releaseDate){ $this->releaseDate = $releaseDate; }
 
+  function getStyle(){ return $this->style; }
+  function setStyle($style){ $this->style = $style; }
+
   function getFKidUser(){ return $this->fk_idUser; }
   function setFKidUser($fk_idUser){ $this->fk_idUser = $fk_idUser; }
 
   function getFKidSection(){ return $this->fk_idSection; }
   function setFKidSection($fk_idSection){ $this->fk_idSection = $fk_idSection; }
-
-  function getFKidStyle(){ return $this->fk_idStyle; }
-  function setFKidStyle($fk_idStyle){ $this->fk_idStyle = $fk_idStyle; }
 }
 
  ?>

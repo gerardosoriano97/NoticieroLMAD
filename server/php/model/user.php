@@ -1,6 +1,6 @@
 <?php
 
-class UserModel
+class User
 {
   private $id;
   private $name;
@@ -11,7 +11,7 @@ class UserModel
   private $birthDate;
   private $cover;
   private $avatar;
-  private $fk_idType;
+  private $type;
 
   function __construct(){
     $this->id = null;
@@ -23,7 +23,7 @@ class UserModel
     $this->birthDate = null;
     $this->cover = null;
     $this->avatar = null;
-    $this->fk_idType = null;
+    $this->type = null;
   }
   function getId(){ return $this->id; }
   function setId($id){ $this->id = $id; }
@@ -52,8 +52,8 @@ class UserModel
   function getAvatar(){ return $this->avatar; }
   function setAvatar($avatar){ $this->avatar = $avatar; }
 
-  function getFKidType(){ return $this->fk_idType; }
-  function setFKidType($fk_idType){ $this->fk_idType = $fk_idType; }
+  function getType(){ return $this->type; }
+  function setType($type){ $this->type = $type; }
 }
 
  ?>

@@ -2,7 +2,7 @@
 include_once('connection.php');
 include_once(dirname(__DIR__).'/model/section.php');
 
-class SectionMethods
+class SectionCRUD
 {
 
   function __construct(){}
@@ -15,7 +15,7 @@ class SectionMethods
       $stm = $conn->prepare('call sp_getAllSections()');
       $stm->execute();
       $result = $stm->fetchAll();
-      return json_encode($result);
+      return $result;
     } catch (PDOException $e) {
       die($e->getMessage());
     } finally {
@@ -48,7 +48,7 @@ class SectionMethods
       $stm->bindParam(1,$section->getId());
       $stm->execute();
       $result = $stm->fetchAll();
-      return json_encode($result);
+      return $result;
     } catch (PDOException $e) {
       die($e->getMessage());
     } finally {
