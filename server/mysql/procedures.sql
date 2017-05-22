@@ -76,7 +76,7 @@ create or replace procedure sp_getUser(
 	in _idUser int unsigned
 )
 begin
-	select name, lastName, email, fn_decrypt(password), phoneNumber, birthDate, avatar, mimeAvatar, cover, mimeCover, type 
+	select name, lastName, email, fn_decrypt(password) as password, phoneNumber, birthDate, avatar, mimeAvatar, cover, mimeCover, type 
     from nl_user where idUser = _idUser;
 end$$
 delimiter ;

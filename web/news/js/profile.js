@@ -9,12 +9,13 @@ $(document).ready(function(){
 
     $.ajax({
       method:       "POST",
-      url:          "../../server/php/controller/test.php",
+      dataType:     "json",
+      url:          "../../server/php/controller/updateAvatar.php",
       data:         form,
       processData:  false,
-      contentType:  false,
+      contentType:  false
     }).done(function(msg){
-      console.log(msg);
+      $('img#imageAvatar').attr('src','data:'+msg.mimeAvatar+';base64,'+msg.avatar);
     }).fail(function(jqXHR, textStatus){
       console.log("Request failed: " + textStatus);
     });
