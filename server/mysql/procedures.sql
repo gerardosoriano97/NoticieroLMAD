@@ -158,7 +158,10 @@ create or replace procedure sp_getNews(
 	in _idNews int unsigned
 )
 begin
-	select title, description, content, releaseDate, name, lastName, state, idSection from vw_newsByUser where idNews = _idNews;
+	select title, description, content, fn_hoursAgo(releaseDate) as hours, releaseDate, 
+			idUser, fn_fullname(name, lastName) as fullname, 
+            idSection, sectionName 
+            from vw_newsInfo where idNews = _idNews;
 end $$
 delimiter ;
 

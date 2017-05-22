@@ -1,11 +1,17 @@
 <?php
-include_once(dirname(__DIR__).'/model/news.php');
 include_once(dirname(__DIR__).'/data/newsCRUD.php');
 
-$id = $_POST['id'];
-$news = new NewsModel();
-$news->setId($id);
-$nm = new NewsMethods();
-$result = $nm->getNews($news);
-print_r($result);
+$idNews = $_GET['idNews'];
+
+$news = new News();
+$news->setId($idNews);
+$multimedia = NewsCRUD::getMultimediaByNews($news);
+$news = NewsCRUD::getNews($news);
+
+$return = array(
+  'news' => $news[0],
+  'multimedia' => $multimedia
+);
+
+print_r(json_encode($return));
  ?>

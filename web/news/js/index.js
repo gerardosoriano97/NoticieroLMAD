@@ -3,7 +3,7 @@ $(document).ready(function(){
     method:   "GET",
     dataType: "json",
     async:    false,
-    url:      "../server/php/controller/getRecentNews.php" + $(location).attr('search')
+    url:      "../../server/php/controller/getRecentNews.php" + $(location).attr('search')
   }).done(function(msg){
     //Parte del titulo
     $('#commercial > .content .title').append('<h1>'+ msg['section'] +'</h1>')
@@ -14,7 +14,7 @@ $(document).ready(function(){
           return false;
         }
         $('#commercial .outstanding').append('' +
-          '<a href="news/inside_note.html?idNews='+ val.idNews +'">' +
+          '<a href="inside_note.html?idNews='+ val.idNews +'">' +
             '<div class="news">' +
               '<div class="infoCard">' +
                 '<img src="resources/images/duarte.jpg" alt="">' +
@@ -31,7 +31,7 @@ $(document).ready(function(){
     if (msg['normal'].length != 0) {
       $.each(msg['normal'],function(key,val){
         $('#commercial .newsSection > .newsContainer').append(''+
-          '<a href="news/inside_note.html?idNews='+ val.idNews +'">'+
+          '<a href="inside_note.html?idNews='+ val.idNews +'">'+
             '<div class="news" id="'+ val.idNews +'">' +
               '<div class="newsImage">' +
                 '<img src="resources/images/duarte.jpg" alt="Imagen de Duarte bebé">' +
@@ -49,7 +49,7 @@ $(document).ready(function(){
     }
     console.log(msg);
   }).fail(function(jqXHR, textStatus){
-    alert("Request failed: " + textStatus);
+    console.log("Request failed: " + textStatus);
   });
 
   $('div.outstanding').slick({

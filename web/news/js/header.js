@@ -3,7 +3,7 @@ $('body#commercial>div.header').ready(function(){
   $.ajax({
     method:   "POST",
     dataType: "json",
-    url:      "../server/php/controller/getAllSections.php"
+    url:      "../../server/php/controller/getAllSections.php"
   }).done(function(msg){
     $.each(msg,function(key,val){
       $("ul.sections").append(''+
@@ -13,6 +13,6 @@ $('body#commercial>div.header').ready(function(){
       );
     });
   }).fail(function(jqXHR, textStatus){
-    alert("Request failed: " + textStatus);
+    console.log("Request failed: " + textStatus);
   });
 });

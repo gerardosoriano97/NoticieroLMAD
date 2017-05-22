@@ -70,7 +70,24 @@ class NewsCRUD
       $stm->bindParam(1,$news->getId());
       $stm->execute();
       $result = $stm->fetchAll();
-      return json_encode($result);
+      return $result;
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    } finally {
+      $conn = null;
+      $pdo->closeConnection();
+    }
+  }
+  function getMultimediaByNews($news){
+    $pdo = new Connection();
+    $conn = $pdo->getConnection();
+    try {
+      $result = array();
+      $stm = $conn->prepare('call sp_getMultimediaByNews(?)');
+      $stm->bindParam(1,$news->getId());
+      $stm->execute();
+      $result = $stm->fetchAll();
+      return $result;
     } catch (PDOException $e) {
       die($e->getMessage());
     } finally {
