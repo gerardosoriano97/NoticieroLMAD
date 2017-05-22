@@ -36,7 +36,7 @@ class UserCRUD
       $stm->bindParam(6,$user->getBithDate());
       $stm->bindParam(7,$user->getCover());
       $stm->bindParam(8,$user->getAvatar());
-      $stm->bindParam(9,$user->getFKidType());
+      $stm->bindParam(9,$user->getType());
       $result = $stm->execute();
       return $result;
     } catch (PDOException $e) {

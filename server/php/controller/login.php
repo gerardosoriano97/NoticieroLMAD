@@ -1,29 +1,46 @@
 <?php
-include_once(dirname(__DIR__).'/model/user.php');
 include_once(dirname(__DIR__).'/data/userCRUD.php');
+include_once(dirname(__DIR__).'/data/JWT.php');
 include_once(dirname(__DIR__).'/data/session.php');
 
+//obtenemos la info
 $json = $_POST['json'];
 $obj = json_decode($json);
-$user = new UserModel();
+//creamos una variable con su info
+$user = new User();
 $user->setEmail($obj->email);
 $user->setPassword(md5($obj->password));
-$um = new UserMethods();
-$result = $um->loginUser($user);
-if ($result != '[]') {
+//obtenemos su información
+$user = UserCRUD::loginUser($user);
+if ($user != '[]') {
+  //si existe, creamos la variable que vamos a retornar
+  $return = array();
+  //después le generamos un token
+  $key = '9286';
+  $token = array(
+    'idUser' => $user[0]['idUser'],
+    'fullname' => $user[0]['fullname'],
+    'email' => $user[0]['email'],
+    'type' => $user[0]['type']
+  );
+  $token = JWT::encode($token,$key);
+  $return['token'] = $token;
+  //le iniciamos sesión
   try {
     $data = Session::getInstance();
-    $data->idUser       = $result[0]['idUser'];
-    $data->name         = $result[0]['name'];
-    $data->lastName     = $result[0]['lastName'];
-    $data->phoneNumber  = $result[0]['phoneNumber'];
-    $data->birthDate    = $result[0]['birthDate'];
-    $data->avatar       = $result[0]['avatar'];
-    $data->cover        = $result[0]['cover'];
-    $data->fk_idType    = $result[0]['fk_idType'];
-    print_r('success');
+    $data->idUser       = $user[0]['idUser'];
+    $data->fullname     = $user[0]['fullname'];
+    $data->email        = $user[0]['email'];
+    $data->phoneNumber  = $user[0]['phoneNumber'];
+    $data->birthDate    = $user[0]['birthDate'];
+    $data->avatar       = $user[0]['avatar'];
+    $data->cover        = $user[0]['cover'];
+    $data->type         = $user[0]['type'];
+    $return['sesion'] = 'success';
   } catch (Exception $e) {
-    print_r('Algo fallo al iniciar sesión');
+    $return['sesion'] = 'fail';
   }
+  //regresamos los datos
+  print_r(json_encode($return));
 }
  ?>

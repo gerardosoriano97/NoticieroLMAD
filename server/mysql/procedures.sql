@@ -5,7 +5,7 @@
 delimiter $$
 create or replace procedure sp_getAllUsers()
 begin
-	select idUser, name, lastName, email, fn_decrypt(password), phoneNumber, birthDate, avatar, cover, fk_idType 
+	select idUser, name, lastName, email, fn_decrypt(password), phoneNumber, birthDate, avatar, cover, type 
     from nl_user order by idUser asc;
 end$$
 delimiter ;
@@ -20,7 +20,7 @@ create or replace procedure sp_setUser(
     in _birthDate date,
     in _avatar varchar(100),
     in _cover varchar(100),
-    in _fk_idType int unsigned
+    in _type int unsigned
 )
 begin
 	if not exists (select email from nl_user where email = _email) then
@@ -33,7 +33,7 @@ begin
         birthDate = _birthDate,
         avatar = _avatar,
 		cover = _cover,
-		fk_idType = _fk_idType;
+		type = _type;
 	else 
     update nl_user set
 		name = _name,
@@ -43,7 +43,7 @@ begin
         birthDate = _birthDate,
         avatar = _avatar,
 		cover = _cover,
-		fk_idType = _fk_idType
+		type = _type
 	where email = _email;
     end if;
 end$$
@@ -54,7 +54,7 @@ create or replace procedure sp_getUser(
 	in _idUser int unsigned
 )
 begin
-	select name, lastName, email, fn_decrypt(password), phoneNumber, birthDate, avatar, cover, fk_idType from nl_user where idUser = _idUser;
+	select name, lastName, email, fn_decrypt(password), phoneNumber, birthDate, avatar, cover, type from nl_user where idUser = _idUser;
 end$$
 delimiter ;
 
@@ -73,7 +73,7 @@ create or replace procedure sp_login(
     in _password varchar(255)
 )
 begin
-	select idUser, name, lastName, phoneNumber, birthDate, avatar, cover, fk_idType
+	select idUser, fn_fullname(name, lastName) as fullname, email, phoneNumber, birthDate, avatar, cover, type
     from nl_user where email = _email and password = fn_encrypt(_password);
 end $$
 delimiter ;
@@ -241,3 +241,12 @@ begin
 end $$
 delimiter ;
 
+/*Multimedia in news*/
+delimiter $$
+create or replace procedure sp_getMultimediaByNews(
+	in _idNews int unsigned
+)
+begin
+	select idNews, idMultimedia, path, description, type from vw_multimediaInNews where idNews = _idNews;
+end$$
+delimiter ;

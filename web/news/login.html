@@ -11,17 +11,31 @@
       <div class="logo">
         <img src="../resources/images/logoStroke.png" alt="Logo de la empresa">
       </div>
-      <form class="loginForm" method="post">
+      <div class="forms">
         <div class="links">
-          <a href="login.html">Login</a>
-          <a href="register.html">Registro</a>
+          <a class="login">Login</a>
+          <a class="register">Registro</a>
         </div>
-        <input class="toJson" type="email" name="email" placeholder="Tu Correo *">
-        <input class="toJson" type="password" name="password" placeholder="Tu Contraseña *">
-        <input type="submit" name="send" value="Submit">
-        <span>¿Olvidaste tu contraseña?</span>
-      </form>
+        <form id="loginForm" method="post">
+          <input class="toJson" type="email" name="email" placeholder="Tu Correo *">
+          <input class="toJson" type="password" name="password" placeholder="Tu Contraseña *">
+          <input type="submit" name="send" value="Submit">
+          <span>¿Olvidaste tu contraseña?</span>
+        </form>
+        <form id="registerForm" method="post">
+          <input class="toJson" type="text" name="name" placeholder="Tu Nombre *">
+          <input class="toJson" type="text" name="lastName" placeholder="Tus Apellidos *">
+          <input class="toJson" type="email" name="email" placeholder="Tu Correo *">
+          <input class="toJson" id="password" type="password" name="password" placeholder="Tu Contraseña *">
+          <input type="password" name="rePassword" placeholder="Confirma Contraseña *">
+          <input type="submit" name="send" value="Submit">
+        </form>
+      </div>
     </div>
-    <script src="../js/dist/bundle.js"></script>
+    <!--Externos-->
+    <script type="text/javascript" src="../resources/libs/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../resources/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+    <!--Internos-->
+    <script type="text/javascript" src="js/login_register.js"></script>
   </body>
 </html>

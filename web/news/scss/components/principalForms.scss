@@ -21,7 +21,7 @@ div.formContainer{
       position: absolute;
     }
   }
-  >form[class$="Form"]{
+  >div.forms{
     width: 300px;
     max-width: 300px;
     min-width: 300px;
@@ -38,6 +38,7 @@ div.formContainer{
       display: flex;
       padding: 0 10px 10px;
       border-bottom: 1px solid $fGrey;
+      margin-bottom: 10px;
       >a{
         flex-grow: 1;
         text-align: center;
@@ -48,51 +49,64 @@ div.formContainer{
         }
       }
     }
-    >input{
-      display: block;
+    >form[id$="Form"]{
       width: 100%;
-      margin: 10px 0 0;
-      padding: 10px;
-      box-sizing: border-box;
-      border: 0;
-      border-radius: 3px;
-      outline: 0;
-      color: $fGrey;
-      font-family: _Swiss_721_;
-      font-weight: bold;
-      box-shadow: inset 0 0 0 $golden;
-      &:first-child{
-        margin-top: 0;
-      }
-      &:focus{
-        box-shadow: inset 0 0 7px $golden;
-      }
-      &.error{
-        box-shadow: inset 0 0 7px $fail;
-      }
-      &[type="submit"]{
-        width: 50%;
-        background-color: $redLight;
-        color: white;
-        box-shadow: 0 0 3px $redHeavy;
-        cursor: pointer;
-        &:hover, &:focus{
-          box-shadow: 0 0 6px $redHeavy;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      >input{
+        display: block;
+        width: 100%;
+        margin: 10px 0 0;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 0;
+        border-radius: 3px;
+        outline: 0;
+        color: $fGrey;
+        font-family: _Swiss_721_;
+        font-weight: bold;
+        box-shadow: inset 0 0 0 $golden;
+        &:first-child{
+          margin-top: 0;
+        }
+        &:focus{
+          box-shadow: inset 0 0 7px $golden;
+        }
+        &.error{
+          box-shadow: inset 0 0 7px $fail;
+        }
+        &[type="submit"]{
+          width: 50%;
+          background-color: $redLight;
+          color: white;
+          box-shadow: 0 0 3px $redHeavy;
+          cursor: pointer;
+          &:hover, &:focus{
+            box-shadow: 0 0 6px $redHeavy;
+          }
         }
       }
-    }
-    >span{
-      font-family: _Swiss_721_;
-      font-weight: bold;
-      margin: 10px 0 0;
-      color: $redHeavy;
-      a:link{
-        color: $link;
+      >span{
+        font-family: _Swiss_721_;
+        font-weight: bold;
+        margin: 10px 0 0;
+        color: $redHeavy;
+        a:link{
+          color: $link;
+        }
+      }
+      >label.error{
+        font: 15px _Swiss_721_;
+        color: $fGrey;
       }
     }
-    >label.error{
-      font: 15px _Swiss_721_;
-      color: $fGrey;
+    >form#registerForm{
+      display: none;
+      text-align: center;
+    }
+    >form#loginForm{
+      text-align: center;
     }
   }
 }
