@@ -13,10 +13,15 @@ $user->setPassword(md5($obj->password));
 //obtenemos su información
 $user = UserCRUD::loginUser($user);
 if ($user != '[]') {
+  //encodeamos la imagen recuperada
+  $user[0]['avatar'] = base64_encode($user[0]['avatar']);
+  $user[0]['cover'] = base64_encode($user[0]['cover']);
   //si existe, creamos la variable que vamos a retornar
-  $return = array();
+  $return = array(
+    'userInfo' => $user[0]
+  );
   //después le generamos un token
-  $key = '9286';
+  $key = '9286'.rand();
   $token = array(
     'idUser' => $user[0]['idUser'],
     'fullname' => $user[0]['fullname'],
@@ -28,14 +33,7 @@ if ($user != '[]') {
   //le iniciamos sesión
   try {
     $data = Session::getInstance();
-    $data->idUser       = $user[0]['idUser'];
-    $data->fullname     = $user[0]['fullname'];
-    $data->email        = $user[0]['email'];
-    $data->phoneNumber  = $user[0]['phoneNumber'];
-    $data->birthDate    = $user[0]['birthDate'];
-    $data->avatar       = $user[0]['avatar'];
-    $data->cover        = $user[0]['cover'];
-    $data->type         = $user[0]['type'];
+    $data->key = $key;
     $return['sesion'] = 'success';
   } catch (Exception $e) {
     $return['sesion'] = 'fail';

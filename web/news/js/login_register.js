@@ -3,6 +3,11 @@ $.validator.addMethod("regx", function(value, element, regexpr) {
 });
 
 $(document).ready(function(){
+  let token = localStorage.getItem("token");
+  if (token != 'undefined' && token != null) {
+    window.location.href = 'index.html';
+  }
+
   $('form#loginForm').validate({
     debug: true,
     rules:{
@@ -48,6 +53,7 @@ $(document).ready(function(){
       }).done(function(msg){
         if (msg.sesion == 'success') {
           localStorage.token = msg.token;
+          localStorage.userInfo = JSON.stringify(msg.userInfo);
           window.location.href = "index.html";
         }
       });
@@ -122,6 +128,7 @@ $(document).ready(function(){
       }).done(function(msg){
         if (msg.sesion == 'success') {
           localStorage.token = msg.token;
+          localStorage.userInfo = JSON.stringify(msg.userInfo);
           window.location.href = "index.html";
         }
       });

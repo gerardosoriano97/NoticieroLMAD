@@ -3,7 +3,7 @@ use noticiero_lmad;
 
 create or replace view vw_newsInfo as
 select
-	idUser, name, lastName,  
+	idUser, name, lastName, avatar, mimeAvatar,
 	idNews, title, description, content, state, releaseDate, style,
     idSection, sectionName
 from nl_news
@@ -17,6 +17,8 @@ select
     tbU.idUser as idUserPattern,
     tbU.name as namePattern,
     tbU.lastName as lastNamePattern,
+    tbU.avatar as avatarPattern,
+    tbU.mimeAvatar as mimeAvatarPattern,
     tbC.idComment as idCommentPattern, 
     tbC.comment as commentPattern, 
     tbC.publication as publicationPattern
@@ -31,6 +33,8 @@ select
     tbU.idUser as idUserChild,
     tbU.name as nameChild,
     tbU.lastName as lastNameChild,
+    tbU.avatar as avatarChild,
+    tbu.mimeAvatar as mimeAvatarChild,
     tbC2.idComment as idCommentChild,
 	tbC2.comment as commentChild,
     tbC2.publication as publicationChild

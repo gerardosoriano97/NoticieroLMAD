@@ -9,22 +9,14 @@ class User
   private $password;
   private $phoneNumber;
   private $birthDate;
-  private $cover;
   private $avatar;
+  private $mimeAvatar;
+  private $cover;
+  private $mimeCover;
   private $type;
 
-  function __construct(){
-    $this->id = null;
-    $this->name = null;
-    $this->lastName = null;
-    $this->email = null;
-    $this->password = null;
-    $this->phoneNumber = null;
-    $this->birthDate = null;
-    $this->cover = null;
-    $this->avatar = null;
-    $this->type = null;
-  }
+  function __construct(){}
+
   function getId(){ return $this->id; }
   function setId($id){ $this->id = $id; }
 
@@ -49,8 +41,14 @@ class User
   function getCover(){ return $this->cover; }
   function setCover($cover){ $this->cover = $cover; }
 
+  function getMimeCover(){ return $this->mimeCover; }
+  function setMimeCover($mimeCover){ $this->mimeCover = $mimeCover; }
+
   function getAvatar(){ return $this->avatar; }
   function setAvatar($avatar){ $this->avatar = $avatar; }
+
+  function getMimeAvatar(){ return $this->mimeAvatar; }
+  function setMimeAvatar($mimeAvatar){ $this->mimeAvatar = $mimeAvatar; }
 
   function getType(){ return $this->type; }
   function setType($type){ $this->type = $type; }

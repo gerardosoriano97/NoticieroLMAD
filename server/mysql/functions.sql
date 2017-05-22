@@ -40,3 +40,13 @@ begin
 	return TIMESTAMPDIFF(hour, _releaseDate, NOW());
 end$$
 delimiter ;
+
+delimiter $$
+create or replace function fn_yearsOld(
+	_birthDate date
+)
+returns int
+begin
+	return TIMESTAMPDIFF(year, _birthDate, NOW());
+end$$
+delimiter ;

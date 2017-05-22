@@ -5,7 +5,7 @@
 delimiter $$
 create or replace procedure sp_getAllUsers()
 begin
-	select idUser, name, lastName, email, fn_decrypt(password), phoneNumber, birthDate, avatar, cover, type 
+	select idUser, name, lastName, email, fn_decrypt(password), phoneNumber, birthDate, avatar, mimeAvatar, cover, mimeCover, type 
     from nl_user order by idUser asc;
 end$$
 delimiter ;
@@ -18,8 +18,6 @@ create or replace procedure sp_setUser(
     in _password varchar(255),
     in _phoneNumber varchar(15),
     in _birthDate date,
-    in _avatar varchar(100),
-    in _cover varchar(100),
     in _type int unsigned
 )
 begin
@@ -31,8 +29,6 @@ begin
         password = fn_encrypt(_password),
         phoneNumber = _phoneNumber,
         birthDate = _birthDate,
-        avatar = _avatar,
-		cover = _cover,
 		type = _type;
 	else 
     update nl_user set
@@ -41,11 +37,37 @@ begin
         password = fn_encrypt(_password),
         phoneNumber = _phoneNumber,
         birthDate = _birthDate,
-        avatar = _avatar,
-		cover = _cover,
 		type = _type
 	where email = _email;
     end if;
+end$$
+delimiter ;
+
+delimiter $$
+create or replace procedure sp_updateAvatar(
+	in _idUser int unsigned,
+	in _avatar blob,
+    in _mimeAvatar varchar(30)
+)
+begin
+	update nl_user set
+		avatar = _avatar,
+        mimeAvatar = _mimeAvatar
+	where idUser = _idUser;
+end$$
+delimiter ;
+
+delimiter $$
+create or replace procedure sp_updateCover(
+	in _idUser int unsigned,
+	in _cover blob,
+    in _mimeCover varchar(30)
+)
+begin
+	update nl_user set
+		cover = _cover,
+        mimeCover = _mimeCover
+	where idUser = _idUser;
 end$$
 delimiter ;
 
@@ -54,7 +76,8 @@ create or replace procedure sp_getUser(
 	in _idUser int unsigned
 )
 begin
-	select name, lastName, email, fn_decrypt(password), phoneNumber, birthDate, avatar, cover, type from nl_user where idUser = _idUser;
+	select name, lastName, email, fn_decrypt(password), phoneNumber, birthDate, avatar, mimeAvatar, cover, mimeCover, type 
+    from nl_user where idUser = _idUser;
 end$$
 delimiter ;
 
@@ -73,7 +96,7 @@ create or replace procedure sp_login(
     in _password varchar(255)
 )
 begin
-	select idUser, fn_fullname(name, lastName) as fullname, email, phoneNumber, birthDate, avatar, cover, type
+	select idUser, fn_fullname(name, lastName) as fullname, name, lastName, email, phoneNumber, birthDate, avatar, mimeAvatar, cover, mimeCover, type
     from nl_user where email = _email and password = fn_encrypt(_password);
 end $$
 delimiter ;
@@ -159,7 +182,7 @@ create or replace procedure sp_getNews(
 )
 begin
 	select title, description, content, fn_hoursAgo(releaseDate) as hours, releaseDate, 
-			idUser, fn_fullname(name, lastName) as fullname, 
+			idUser, fn_fullname(name, lastName) as fullname, avatar, mimeAvatar,
             idSection, sectionName 
             from vw_newsInfo where idNews = _idNews;
 end $$
@@ -172,7 +195,7 @@ create or replace procedure sp_getRecentNews(
 )
 begin
 	select idNews,title,description, style, fn_hoursAgo(releaseDate) as hours, releaseDate,
-			idUser, fn_fullname(name, lastName) as fullname,
+			idUser, fn_fullname(name, lastName) as fullname, avatar, mimeAvatar,
 			idSection,sectionName
     from vw_newsInfo 
     where state = 1 and style = _style
@@ -188,7 +211,7 @@ create or replace procedure sp_getRecentNewsBySection(
 )
 begin
 	select idNews,title,description, style, fn_hoursAgo(releaseDate) as hours, releaseDate,
-			idUser, fn_fullname(name, lastName) as fullname,
+			idUser, fn_fullname(name, lastName) as fullname, avatar, mimeAvatar,
 			idSection,sectionName
     from vw_newsInfo 
     where state = 1 and idSection = _idSection and style = _style
@@ -226,7 +249,7 @@ create or replace procedure sp_getCommentInNews(
 	in _idNews int unsigned
 )
 begin
-	select namePattern,lastNamePattern,idCommentPattern,commentPattern,publicationPattern
+	select fn_fullname(namePattern,lastNamePattern) as fullname, avatarPattern, mimeAvatarPattern, idCommentPattern,commentPattern,publicationPattern
     from vw_commentInNews where idNews = _idNews order by publicationPattern desc;
 end $$
 delimiter ;
@@ -236,7 +259,7 @@ create or replace procedure sp_getCommentInComment(
 	in _idCommentPattern int unsigned
 )
 begin
-	select nameChild,lastNameChild,idCommentChild,commentChild,publicationChild
+	select fn_fullname(nameChild,lastNameChild) as fullname, avatarChild, mimeAvatarChild, idCommentChild,commentChild,publicationChild
     from vw_commentInComment where idCommentPattern = _idCommentPattern order by publicationChild desc;
 end $$
 delimiter ;

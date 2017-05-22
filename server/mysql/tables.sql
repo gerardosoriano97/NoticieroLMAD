@@ -13,7 +13,9 @@ password varchar(255),
 phoneNumber varchar(15),
 birthDate date,
 avatar blob,
+mimeAvatar varchar(30),
 cover blob,
+mimeCover varchar(30),
 type enum('administrador','reportero','registrado','anónimo') default 'anónimo',
 primary key(idUser)
 );

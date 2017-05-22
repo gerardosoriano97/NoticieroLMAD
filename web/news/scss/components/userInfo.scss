@@ -3,15 +3,35 @@ body#commercial>div.content>div.center>form.userInfo{
   border: 1px solid $black;
   box-shadow: 0 0 7px $golden;
   padding: 10px;
-  >input{
-    margin-left: 15px;
-    padding: 10px;
-    border: 0;
-    border-bottom: 1px solid $black;
-    font: 20px _Swiss_721_;
-    display: block;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   >h1{
+    width: 100%;
     font: italic bold 25px _Swiss_721_;
+  }
+  >div.input{
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+    border: 1px solid $black;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    >h1{
+      margin: 5px;
+      font: bold 20px _Swiss_721_;
+      text-transform: uppercase;
+    }
+    >input{
+      padding: 10px;
+      border: 0;
+      border-bottom: 1px solid $black;
+      width: 100%;
+      box-sizing: border-box;
+      font: 20px _Swiss_721_;
+      display: block;
+    }
   }
 }

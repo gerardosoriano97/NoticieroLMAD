@@ -27,16 +27,48 @@ class UserCRUD
     $pdo = new Connection();
     $conn = $pdo->getConnection();
     try {
-      $stm = $conn->prepare('call sp_setUser(?,?,?,?,?,?,?,?,?)');
+      $stm = $conn->prepare('call sp_setUser(?,?,?,?,?,?,?)');
       $stm->bindParam(1,$user->getName());
       $stm->bindParam(2,$user->getLastName());
       $stm->bindParam(3,$user->getEmail());
       $stm->bindParam(4,$user->getPassword());
       $stm->bindParam(5,$user->getPhoneNumber());
       $stm->bindParam(6,$user->getBithDate());
-      $stm->bindParam(7,$user->getCover());
-      $stm->bindParam(8,$user->getAvatar());
-      $stm->bindParam(9,$user->getType());
+      $stm->bindParam(7,$user->getType());
+      $result = $stm->execute();
+      return $result;
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    } finally {
+      $conn = null;
+      $pdo->closeConnection();
+    }
+  }
+  function updateAvatar($user){
+    $pdo = new Connection();
+    $conn = $pdo->getConnection();
+    try {
+      $stm = $conn->prepare('call sp_updateAvatar(?,?,?)');
+      $stm->bindParam(1,$user->getId());
+      $stm->bindParam(2,$user->getAvatar());
+      $stm->bindParam(3,$user->getMimeAvatar());
+      $result = $stm->execute();
+      return $result;
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    } finally {
+      $conn = null;
+      $pdo->closeConnection();
+    }
+  }
+  function updateCover($user){
+    $pdo = new Connection();
+    $conn = $pdo->getConnection();
+    try {
+      $stm = $conn->prepare('call sp_updateAvatar(?,?,?)');
+      $stm->bindParam(1,$user->getId());
+      $stm->bindParam(2,$user->getCover());
+      $stm->bindParam(3,$user->getMimeCover());
       $result = $stm->execute();
       return $result;
     } catch (PDOException $e) {

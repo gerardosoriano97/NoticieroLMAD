@@ -52,6 +52,7 @@ $(document).ready(function(){
     console.log("Request failed: " + textStatus);
   });
 
+  //creamos el carrusel de noticias principales
   $('div.outstanding').slick({
     slidesToShow: 1,
     slidesToScroll: 1,

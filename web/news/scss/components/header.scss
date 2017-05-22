@@ -44,7 +44,7 @@ body#commercial>div[class^="header"]{
     justify-content: flex-end;
     align-items: center;
     position: absolute;
-    right: 10px;
+    right: 130px;
     >div.profilePicture{
       width: 40px;
       height: 40px;
@@ -60,10 +60,39 @@ body#commercial>div[class^="header"]{
         max-height: 100%;
       }
     }
-    >h1{
-      color: white;
-      font: 18px _Swiss_721_;
-      margin: 0;
+    >a{
+      >h1{
+        color: white;
+        font: 18px _Swiss_721_;
+        margin: 0;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
     }
+  }
+  >button{
+    display: block;
+    position: absolute;
+    right: 10px;
+    width: 115px;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 3px;
+    outline: 0;
+    font-family: _Swiss_721_;
+    font-weight: bold;
+    background-color: $redLight;
+    color: white;
+    box-shadow: 0 0 3px $redHeavy;
+    cursor: pointer;
+    &:hover, &:focus{
+      box-shadow: 0 0 6px $redHeavy;
+    }
+  }
+  .hidden{
+    display: none !important;
   }
 }

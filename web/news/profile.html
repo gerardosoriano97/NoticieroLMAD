@@ -3,35 +3,48 @@
   <head>
     <meta charset="utf-8">
     <title>Profile</title>
+    <link rel="stylesheet" href="../resources/libs/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body id="commercial">
     <div class="header">
-      <img src="../resources/images/logo.png" alt="Logo de la página">
+      <a href="index.html"><img src="../resources/images/logo.png" alt="Logo de la página"></a>
       <ul class="sections">
-        <li><a href="#">Seccion</a></li>
-        <li><a href="#">Seccion</a></li>
-        <li><a href="#">Seccion</a></li>
-        <li><a href="#">Seccion</a></li>
-        <li><a href="#">Seccion</a></li>
       </ul>
-      <div class="userInfo">
+      <div class="userInfo hidden">\
         <div class="profilePicture">
           <img src="../resources/images/profile.jpg" alt="Imagen de perfil">
         </div>
-        <h1>gerardosoriano97</h1>
       </div>
+      <button type="button" name="singOut">
+        <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión
+      </button>
+      <button type="button" name="singIn">
+        <i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión
+      </button>
     </div>
     <div class="content">
       <div class="profile">
-        <div class="cover">
-          <img src="../resources/images/background.jpg" alt="">
-        </div>
+        <form class="coverImage" method="post" enctype="multipart/form-data">
+          <label for="cover">
+            <div class="black">
+              <i class="fa fa-camera" aria-hidden="true"></i>
+            </div>
+            <img src="../resources/images/background.jpg" alt="">
+          </label>
+          <input id="cover" type="file" name="cover" accept="image/x-png,image/jpeg">
+        </form>
         <div class="down">
           <div class="user">
-            <div class="userImage">
-              <img src="../resources/images/profile.jpg" alt="">
-            </div>
+            <form class="userImage" method="post" enctype="multipart/form-data">
+              <label for="avatar">
+                <div class="black">
+                  <i class="fa fa-camera" aria-hidden="true"></i>
+                </div>
+                <img src="../resources/images/profile.jpg" alt="">
+              </label>
+              <input id="avatar" type="file" name="avatar" accept="image/x-png,image/jpeg"/>
+            </form>
             <h1>Usuario chido</h1>
           </div>
           <button type="button" name="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar</button>
@@ -40,13 +53,37 @@
       <div class="center">
         <form class="userInfo" action="index.html" method="post">
           <h1>Usuario</h1>
-          <input type="text" name="firstName" value="Gerardo" readonly>
-          <input type="text" name="lastName" value="Soriano" readonly>
-          <input type="number" name="age" value="18" readonly>
-          <h1>Otra Info</h1>
-          <input type="text" name="address" value="Enrique Segoviano" readonly>
+          <div class="input">
+            <h1>Nombre(s)</h1>
+            <input type="text" name="firstName" value="Gerardo" readonly>
+          </div>
+          <div class="input">
+            <h1>Apellido(s)</h1>
+            <input type="text" name="lastName" value="Soriano" readonly>
+          </div>
+          <div class="input">
+            <h1>Correo</h1>
+            <input type="email" name="email" value="gerardosoriano97@gmail.com" readonly>
+          </div>
+          <div class="input">
+            <h1>Número telefónico</h1>
+            <input type="number" name="phoneNumber" value="8282810966" readonly>
+          </div>
+          <div class="input">
+            <h1>Fecha de nacimiento</h1>
+            <input type="date" name="birthDate" value="1997-09-07" readonly>
+          </div>
+          <div class="input">
+            <h1>Tipo de usuario</h1>
+            <input type="text" name="type" value="admin" readonly>
+          </div>
         </form>
       </div>
     </div>
+    <!--Externos-->
+    <script type="text/javascript" src="../resources/libs/jquery/dist/jquery.min.js"></script>
+    <!--Internos-->
+    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="js/profile.js"></script>
   </body>
 </html>

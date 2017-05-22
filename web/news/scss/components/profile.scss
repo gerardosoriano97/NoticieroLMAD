@@ -8,15 +8,34 @@ body#commercial>div.content>div.profile{
   overflow: hidden;
   position: relative;
   max-height: 400px;
-  >div.cover{
+  >form.coverImage{
     width: 100%;
     height: 300px;
     overflow: hidden;
-    >img{
-      width: auto;
-      height: auto;
-      min-width: 100%;
-      max-width: 100%;
+    position: relative;
+    >label{
+      width: 100%;
+      height: 100%;
+      >div.black{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        color: $grey;
+        font-size: 0;
+        &:hover{
+          font-size: 50px;
+          background: $modalShadow;
+        }
+      }
+      >img{
+        width: auto;
+        height: auto;
+        min-width: 100%;
+        max-width: 100%;
+      }
     }
   }
   >div.down{
@@ -28,17 +47,40 @@ body#commercial>div.content>div.profile{
     >div.user{
       display: flex;
       align-items: flex-end;
-      >div.userImage{
+      >form.userImage{
         width: 200px;
         height: 200px;
         border-radius: 50%;
         overflow: hidden;
         text-align: center;
-        >img{
-          width: auto;
-          height: auto;
-          min-height: 100%;
-          max-height: 100%;
+        position: relative;
+        >label{
+          width: 100%;
+          height: 100%;
+          >div.black{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            color: $grey;
+            font-size: 0;
+            &:hover{
+              font-size: 50px;
+              background: $modalShadow;
+            }
+          }
+          >img{
+            width: auto;
+            height: auto;
+            min-height: 100%;
+            max-height: 100%;
+            cursor: pointer;
+          }
+        }
+        >input#avatar{
+          display: none;
         }
       }
       >h1{
