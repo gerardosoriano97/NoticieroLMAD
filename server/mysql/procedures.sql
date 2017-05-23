@@ -18,7 +18,7 @@ create or replace procedure sp_setUser(
     in _password varchar(255),
     in _phoneNumber varchar(15),
     in _birthDate date,
-    in _type int unsigned
+    in _type varchar(50)
 )
 begin
 	if not exists (select email from nl_user where email = _email) then
@@ -34,7 +34,6 @@ begin
     update nl_user set
 		name = _name,
         lastName = _lastName,
-        password = fn_encrypt(_password),
         phoneNumber = _phoneNumber,
         birthDate = _birthDate,
 		type = _type
@@ -76,7 +75,7 @@ create or replace procedure sp_getUser(
 	in _idUser int unsigned
 )
 begin
-	select name, lastName, email, fn_decrypt(password) as password, phoneNumber, birthDate, avatar, mimeAvatar, cover, mimeCover, type 
+	select name, lastName, fn_fullname(name,lastName) as fullname, email, phoneNumber,fn_yearsOld(birthDate) as years, birthDate, avatar, mimeAvatar, cover, mimeCover, type 
     from nl_user where idUser = _idUser;
 end$$
 delimiter ;

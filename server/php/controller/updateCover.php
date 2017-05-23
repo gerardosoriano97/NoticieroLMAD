@@ -13,13 +13,13 @@ if (isset($_POST['token'])) {
   //nos aseguramos de la validez del token
   if(array_key_exists("idUser",$token)){
     //si recibimos imagen alguna, proseguimos
-    if(isset($_FILES['avatar'])){
+    if(isset($_FILES['cover'])){
       $errors= array();
-      $file_name = $_FILES['avatar']['name'];
-      $file_size =$_FILES['avatar']['size'];
-      $file_tmp =$_FILES['avatar']['tmp_name'];
-      $file_type=$_FILES['avatar']['type'];
-      $file_ext=strtolower(end(explode('.',$_FILES['avatar']['name'])));
+      $file_name = $_FILES['cover']['name'];
+      $file_size =$_FILES['cover']['size'];
+      $file_tmp =$_FILES['cover']['tmp_name'];
+      $file_type=$_FILES['cover']['type'];
+      $file_ext=strtolower(end(explode('.',$_FILES['cover']['name'])));
 
       $expensions= array("jpeg","jpg","png");
 
@@ -33,15 +33,15 @@ if (isset($_POST['token'])) {
       //si no ocurrio ningin erro
       if(empty($errors)==true){
         //obtenemos la imagen
-        $avatar = file_get_contents($file_tmp);
+        $cover = file_get_contents($file_tmp);
         //Creamos la variable de usuario
         $user = new User();
         //introducimos los parametros que nos interesa
         $user->setId($token->idUser);
-        $user->setAvatar($avatar);
-        $user->setMimeAvatar($file_type);
+        $user->setCover($cover);
+        $user->setMimeCover($file_type);
         //lamamos el procedure
-        $result = UserCRUD::updateAvatar($user);
+        $result = UserCRUD::updateCover($user);
         if ($result == 1) {
           //si todo sale bien, seleccionamos el reciente usuario afecado
           $user = UserCRUD::getUser($user);

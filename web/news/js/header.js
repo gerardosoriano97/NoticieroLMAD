@@ -26,8 +26,11 @@ $('body#commercial>div.header').ready(function(){
     //obtenemos la información del usuario
     let user = localStorage.getItem("userInfo");
     user = JSON.parse(user);
-    //apendizamos al userInfo nuestro nombre completo con referencia a nuestro perfil
+    //apendizamos al userInfo nuestra imagem y nuestro nombre completo con referencia a nuestro perfil
     $('.header > .userInfo').append(''+
+      '<div class="profilePicture">' +
+        '<img src="data:'+user.mimeAvatar+';base64,'+user.avatar+'" alt="Imagen de perfil">' +
+      '</div>' +
       '<a href="profile.html">' +
         '<h1>'+ user.fullname +'</h1>' +
       '</a>'

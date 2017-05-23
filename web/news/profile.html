@@ -11,10 +11,7 @@
       <a href="index.html"><img src="../resources/images/logo.png" alt="Logo de la página"></a>
       <ul class="sections">
       </ul>
-      <div class="userInfo hidden">\
-        <div class="profilePicture">
-          <img src="../resources/images/profile.jpg" alt="Imagen de perfil">
-        </div>
+      <div class="userInfo hidden">
       </div>
       <button type="button" name="singOut">
         <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión
@@ -30,7 +27,7 @@
             <div class="black">
               <i class="fa fa-camera" aria-hidden="true"></i>
             </div>
-            <img src="../resources/images/background.jpg" alt="">
+            <img id="imageCover" src="../resources/images/thumbnail.jpg" alt="">
           </label>
           <input id="cover" type="file" name="cover" accept="image/x-png,image/jpeg">
         </form>
@@ -41,47 +38,48 @@
                 <div class="black">
                   <i class="fa fa-camera" aria-hidden="true"></i>
                 </div>
-                <img id="imageAvatar" src="../resources/images/profile.jpg">
+                <img id="imageAvatar" src="../resources/images/user.png">
               </label>
               <input id="avatar" type="file" name="avatar" accept="image/x-png,image/jpeg"/>
             </form>
-            <h1>Usuario chido</h1>
+            <h1 id="fullname"></h1>
           </div>
-          <button type="button" name="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar</button>
+          <button type="button" id="editSave"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span>Editar</span></button>
         </div>
       </div>
       <div class="center">
-        <form class="userInfo" action="index.html" method="post">
+        <form class="userInfo" method="post">
           <h1>Usuario</h1>
           <div class="input">
             <h1>Nombre(s)</h1>
-            <input type="text" name="firstName" value="Gerardo" readonly>
+            <input class="toJson" type="text" name="name" value="Gerardo" readonly="true">
           </div>
           <div class="input">
             <h1>Apellido(s)</h1>
-            <input type="text" name="lastName" value="Soriano" readonly>
+            <input class="toJson" type="text" name="lastName" value="Soriano" readonly="true">
           </div>
           <div class="input">
             <h1>Correo</h1>
-            <input type="email" name="email" value="gerardosoriano97@gmail.com" readonly>
+            <input class="toJson" type="email" name="email" value="gerardosoriano97@gmail.com" readonly="true">
           </div>
           <div class="input">
             <h1>Número telefónico</h1>
-            <input type="number" name="phoneNumber" value="8282810966" readonly>
+            <input class="toJson" type="number" name="phoneNumber" value="8282810966" readonly="true">
           </div>
           <div class="input">
             <h1>Fecha de nacimiento</h1>
-            <input type="date" name="birthDate" value="1997-09-07" readonly>
+            <input class="toJson" type="date" name="birthDate" value="1997-09-07" readonly="true">
           </div>
           <div class="input">
             <h1>Tipo de usuario</h1>
-            <input type="text" name="type" value="admin" readonly>
+            <input class="toJson" type="text" name="type" value="admin" readonly="true">
           </div>
         </form>
       </div>
     </div>
     <!--Externos-->
     <script type="text/javascript" src="../resources/libs/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../resources/libs/jquery-validation/dist/jquery.validate.min.js"></script>
     <!--Internos-->
     <script type="text/javascript" src="js/header.js"></script>
     <script type="text/javascript" src="js/profile.js"></script>

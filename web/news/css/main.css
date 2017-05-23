@@ -532,6 +532,8 @@ body#commercial > div.content > div.profile {
         height: auto;
         min-width: 100%;
         max-width: 100%; }
+    body#commercial > div.content > div.profile > form.coverImage > input#cover {
+      display: none; }
   body#commercial > div.content > div.profile > div.down {
     width: 100%;
     display: flex;
@@ -573,16 +575,16 @@ body#commercial > div.content > div.profile {
           display: none; }
       body#commercial > div.content > div.profile > div.down > div.user > h1 {
         font: italic 30px _Swiss_721_; }
-    body#commercial > div.content > div.profile > div.down > button[name="edit"] {
+    body#commercial > div.content > div.profile > div.down > button#editSave {
       padding: 10px;
       width: 150px;
       background-color: #ffde16;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       font: 20px _Swiss_721_;
       color: #252525;
       border: 0; }
-      body#commercial > div.content > div.profile > div.down > button[name="edit"]:hover {
+      body#commercial > div.content > div.profile > div.down > button#editSave:hover {
         box-shadow: inset 0 0 7px #786b40; }
 
 body#commercial > div.content > div.center > div.section {

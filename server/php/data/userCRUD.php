@@ -65,7 +65,7 @@ class UserCRUD
     $pdo = new Connection();
     $conn = $pdo->getConnection();
     try {
-      $stm = $conn->prepare('call sp_updateAvatar(?,?,?)');
+      $stm = $conn->prepare('call sp_updateCover(?,?,?)');
       $stm->bindParam(1,$user->getId());
       $stm->bindParam(2,$user->getCover());
       $stm->bindParam(3,$user->getMimeCover());

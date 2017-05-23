@@ -37,6 +37,9 @@ body#commercial>div.content>div.profile{
         max-width: 100%;
       }
     }
+    >input#cover{
+      display: none;
+    }
   }
   >div.down{
     width: 100%;
@@ -87,12 +90,12 @@ body#commercial>div.content>div.profile{
         font: italic 30px _Swiss_721_;
       }
     }
-    >button[name="edit"]{
+    >button#editSave{
       padding: 10px;
       width: 150px;
       background-color: $yellow;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       font: 20px _Swiss_721_;
       color: $black;
       border: 0;
