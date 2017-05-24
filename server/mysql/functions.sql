@@ -50,3 +50,20 @@ begin
 	return TIMESTAMPDIFF(year, _birthDate, NOW());
 end$$
 delimiter ;
+delimiter $$
+create or replace function fn_getLastIdUser(
+	_email varchar(60)
+)
+returns int
+begin
+	declare _idUser int default 0;
+    
+    if not exists (select idUser from nl_user where email = _email) then
+		select idUser into _idUser from nl_user order by idUser desc limit 1;
+    else
+		select idUser into _idUser from nl_user where email = _email;
+	end if;
+    
+    return _idUser;
+end$$
+delimiter ;

@@ -681,3 +681,5 @@ body#commercial > div.content > div.center > div.writeSection {
       color: #626262; }
       body#commercial > div.content > div.center > div.writeSection > form.commentForm > input[name="post"]:hover {
         box-shadow: inset 0 0 7px #786b40; }
+    body#commercial > div.content > div.center > div.writeSection > form.commentForm .hidden {
+      display: none; }

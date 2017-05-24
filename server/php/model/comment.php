@@ -10,14 +10,6 @@ class Comment
   private $fk_idComment;
 
   function __construct(){}
-  function __construct($id, $comment, $publication, $fk_idUser, $fk_idNews, $fk_idComment){
-    $this->id = $id;
-    $this->comment = $comment;
-    $this->publication = $publication;
-    $this->fk_idUser = $fk_idUser;
-    $this->fk_idNews = $fk_idNews;
-    $this->fk_idComment = $fk_idComment;
-  }
 
   function getId(){ return $this->id; }
   function setId($id){ $this->id = $id; }

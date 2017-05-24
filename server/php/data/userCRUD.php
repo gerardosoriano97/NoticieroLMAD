@@ -44,6 +44,28 @@ class UserCRUD
       $pdo->closeConnection();
     }
   }
+  function setUserForComment($user){
+    $pdo = new Connection();
+    $conn = $pdo->getConnection();
+    try {
+      $stm = $conn->prepare('call sp_setUserForComment(?,fn_getLastIdUser(?),?,?,?,?,?)');
+      $stm->bindParam(1,$user->getName());
+      $stm->bindParam(2,$user->getEmail());
+      $stm->bindParam(3,$user->getEmail());
+      $stm->bindParam(4,$user->getPassword());
+      $stm->bindParam(5,$user->getPhoneNumber());
+      $stm->bindParam(6,$user->getBithDate());
+      $stm->bindParam(7,$user->getType());
+      $stm->execute();
+      $result = $stm->fetchAll();
+      return $result;
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    } finally {
+      $conn = null;
+      $pdo->closeConnection();
+    }
+  }
   function updateAvatar($user){
     $pdo = new Connection();
     $conn = $pdo->getConnection();

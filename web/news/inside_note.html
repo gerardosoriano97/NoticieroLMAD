@@ -29,32 +29,23 @@
         </div>
         <div class="writeSection">
           <div class="userImage">
-            <img src="../resources/images/profile.jpg" alt="">
+            <img src="../resources/images/user.png" alt="">
           </div>
-          <form class="commentForm" action="index.html" method="post">
-            <input type="text" name="email" placeholder="Escribe tu email">
+          <form class="commentForm" method="post">
+            <input class="toJson" type="text" name="email" placeholder="Escribe tu email">
             <div class="square"></div>
-            <textarea name="comment" rows="8" cols="80" placeholder="comentario"></textarea>
-            <input type="submit" name="post" value="Publicar">
+            <textarea class="toJson" name="comment" rows="8" cols="80" placeholder="comentario"></textarea>
+            <input id="submit" type="submit" name="post" value="Publicar">
           </form>
         </div>
         <div class="commentsContainer">
-          <div class="comment">
-            <div class="userImage">
-              <img src="../resources/images/profile.jpg" alt="">
-            </div>
-            <div class="square"></div>
-            <div class="commentInfo">
-              <h1>Usuario</h1>
-              <h2>El comentario mas verga hecho por un usuario.</h2>
-            </div>
-          </div>
         </div>
       </div>
     </div>
     <!--Externos-->
     <script type="text/javascript" src="../resources/libs/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="../resources/libs/slick-carousel/slick/slick.min.js"></script>
+    <script type="text/javascript" src="../resources/libs/jquery-validation/dist/jquery.validate.min.js"></script>
     <!--Internos-->
     <script type="text/javascript" src="js/header.js"></script>
     <script type="text/javascript" src="js/inside_note.js"></script>

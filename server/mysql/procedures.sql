@@ -43,6 +43,40 @@ end$$
 delimiter ;
 
 delimiter $$
+create or replace procedure sp_setUserForComment(
+	in _name varchar(40),
+    in _lastName varchar(40),
+    in _email varchar(60),
+    in _password varchar(255),
+    in _phoneNumber varchar(15),
+    in _birthDate date,
+    in _type varchar(50)
+)
+begin
+	if not exists (select email from nl_user where email = _email) then
+	insert into nl_user set
+		name = _name,
+        lastName = _lastName,
+        email = _email,
+        password = fn_encrypt(_password),
+        phoneNumber = _phoneNumber,
+        birthDate = _birthDate,
+		type = _type;
+	else 
+    update nl_user set
+		name = _name,
+        lastName = _lastName,
+        phoneNumber = _phoneNumber,
+        birthDate = _birthDate,
+		type = _type
+	where email = _email;
+    end if;
+    
+    select idUser from nl_user where email = _email;
+end$$
+delimiter ;
+
+delimiter $$
 create or replace procedure sp_updateAvatar(
 	in _idUser int unsigned,
 	in _avatar blob,
