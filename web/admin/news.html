@@ -3,18 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>N E W S</title>
-    <link rel="stylesheet" href="../../css/dist/main.min.css">
+    <link rel="stylesheet" href="css/main.css">
   </head>
   <body id="admin">
     <div class="menu">
       <h1>Admin</h1>
       <div class="userInfo">
         <div class="profilePicture">
-          <img src="../../resources/images/profile.jpg" alt="Imagen de perfil">
+          <img src="../resources/images/user.png" alt="Imagen de perfil">
         </div>
         <h1>
           Bienvenido, <br>
-          <span class="username">gerardosoriano97</span>
+          <span class="fullname">gerardosoriano97</span>
         </h1>
       </div>
       <ul class="sections">
@@ -33,15 +33,16 @@
       </div>
       <div class="userInfo">
         <div class="profilePicture">
-          <img src="../../resources/images/profile.jpg" alt="Imagen de perfil">
+          <img src="../resources/images/user.png" alt="Imagen de perfil">
         </div>
-        <h1>gerardosoriano97</h1>
+        <h1 class="fullname">gerardosoriano97</h1>
       </div>
     </div>
     <div class="content">
       <div class="news">
         <div class="section">
           <label>Noticias</label>
+          <button id="new" type="button" name="new">añadir noticia</button>
           <div class="card">
             <table id="tableNews" class="table">
               <thead>
@@ -63,21 +64,37 @@
     <div class="modal-hide">
       <div class="box">
         <form class="newsForm" method="post">
-          <input type="hidden" name="id" value="null">
-          <input type="text" name="title" placeholder="Titulo *">
-          <input type="text" name="description" placeholder="Description *">
-          <textarea name="content" rows="8" cols="80" placeholder="Contenido *"></textarea>
-          <select name="section">
+          <input class="toJson" type="hidden" name="id" value="">
+          <input class="toJson" type="hidden" name="idUser" value="">
+          <label for="title">Título:</label>
+          <input id="title" class="toJson" type="text" name="title" placeholder="Titulo *">
+          <label for="description">Descripción:</label>
+          <input id="description"class="toJson" type="text" name="description" placeholder="Description *">
+          <label for="content">Contenido:</label>
+          <textarea id="content" class="toJson" name="content" rows="8" cols="80" placeholder="Contenido *"></textarea>
+          <label for="section">Sección:</label>
+          <label for="style">Estilo:</label>
+          <select id="section" class="toJson" name="section">
             <option value="1">Deportes</option>
             <option value="2">Espectaculo</option>
             <option value="3">Politica</option>
             <option value="4">Cine</option>
           </select>
+          <select id="style" class="toJson" name="style">
+            <option value="1">Destacada</option>
+            <option value="2">Normal</option>
+          </select>
+          <label for="state" class="hidden">Publico:</label>
+          <input id="state" class="hidden" type="checkbox" name="state">
           <input type="submit" name="send" value="Submit">
-          <input type="reset" name="reset" value="Clear">
+          <input type="button" name="back" value="Back">
         </form>
       </div>
     </div>
-    <script src="../../js/dist/bundle.js"></script>
+    <!--Extrenal-->
+    <script type="text/javascript" src="../resources/libs/jquery/dist/jquery.min.js"></script>
+    <!--Internal-->
+    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="js/news.js"></script>
   </body>
 </html>

@@ -1,0 +1,37 @@
+body{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+  overflow: initial;
+  &#loginRegister{
+    overflow: hidden;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  &#admin{
+    padding: 0;
+    margin: 0;
+    background-color: $thirdColor;
+  }
+  *{
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  a{
+    color: inherit;
+    &:link{
+      text-decoration: none;
+    }
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  >img[role="background"]{
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    position: absolute;
+  }
+}

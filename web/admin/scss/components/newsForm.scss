@@ -2,11 +2,23 @@ body#admin>div[class^="modal"]>div.box>form.newsForm{
   background-color: $firstColor;
   box-sizing: border-box;
   padding: 10px;
+  align-content: flex-start;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  >input[name="title"], >input[name="description"],>textarea[name="content"],>select[name="section"]{
+  min-height: 500px;
+  >label{
+    font: 200 20px "Century Gothic";
+    color: #e2e1e0;
+    letter-spacing: 3px;
+    text-transform: capitalize;
+    width: 50%;
+    &:last-of-type{
+      width: auto;
+    }
+  }
+  >input[name="title"], >input[name="description"],>textarea[name="content"],>select[name="section"],>select[name="style"]{
     width: 100%;
     padding: 10px;
     font: 15px "Century Gothic";
@@ -18,11 +30,10 @@ body#admin>div[class^="modal"]>div.box>form.newsForm{
   >textarea[name="content"]{
     resize: none;
   }
-  >select[name="section"]{
+  >select[name="section"],>select[name="style"]{
     width: 50%;
-    margin: 0;
   }
-  >input[name="send"],>input[name="reset"]{
+  >input[name="send"],>input[name="back"]{
     width: 100px;
     box-sizing: border-box;
     padding: 10px;
@@ -33,5 +44,15 @@ body#admin>div[class^="modal"]>div.box>form.newsForm{
   }
   >input[name="send"]{
     right: 120px;
+  }
+  >input[name="state"]{
+    margin: 0 0 0 10px;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    background-color: $thirdColor;
+  }
+  .hidden{
+    display: none;
   }
 }

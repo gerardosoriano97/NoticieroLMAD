@@ -1,0 +1,333 @@
+@font-face {
+  font-family: _Swiss_721_;
+  src: url("../../resources/fonts/Swiss721.ttf"); }
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+  overflow: initial; }
+  body#loginRegister {
+    overflow: hidden;
+    justify-content: flex-end;
+    align-items: center; }
+  body#admin {
+    padding: 0;
+    margin: 0;
+    background-color: #e2e1e0; }
+  body * {
+    transition: box-shadow 0.3s ease-in-out; }
+  body a {
+    color: inherit; }
+    body a:link {
+      text-decoration: none; }
+    body a:hover {
+      text-decoration: underline; }
+  body > img[role="background"] {
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    position: absolute; }
+
+div[class^="menu"] {
+  width: 300px;
+  max-width: 300px;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #2A3F54;
+  overflow: hidden;
+  box-sizing: border-box;
+  align-content: flex-start;
+  padding: 5px;
+  position: fixed;
+  z-index: 3; }
+  div[class^="menu"] > h1 {
+    color: #ededed;
+    font: 39px "Century Gothic";
+    text-transform: uppercase;
+    letter-spacing: 25px;
+    display: inline-block;
+    margin: 0;
+    width: 100%;
+    text-align: center; }
+  div[class^="menu"] > div.userInfo {
+    width: 100%;
+    height: 130px;
+    border: 0 solid #ededed;
+    border-bottom-width: 3px;
+    overflow: hidden;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; }
+    div[class^="menu"] > div.userInfo > div.profilePicture {
+      width: 100px;
+      height: 100px;
+      border: 3px solid #ededed;
+      border-radius: 50%;
+      text-align: center;
+      display: inline-block;
+      overflow: hidden;
+      margin-right: 10px; }
+      div[class^="menu"] > div.userInfo > div.profilePicture > img {
+        width: auto;
+        height: auto;
+        max-height: 100%;
+        min-height: 100%; }
+    div[class^="menu"] > div.userInfo > h1 {
+      color: #ededed;
+      font: bold 15px "Century Gothic";
+      display: inline-block; }
+  div[class^="menu"] > ul.sections {
+    list-style: none; }
+    div[class^="menu"] > ul.sections > li {
+      color: #ededed;
+      font: 15px "Century Gothic";
+      margin-bottom: 10px; }
+      div[class^="menu"] > ul.sections > li:nth-child(2)::before {
+        content: "*";
+        font-size: 25px;
+        color: yellow;
+        position: absolute;
+        transform: translateX(-15px); }
+      div[class^="menu"] > ul.sections > li > a {
+        color: #ededed; }
+        div[class^="menu"] > ul.sections > li > a:visited, div[class^="menu"] > ul.sections > li > a:hover, div[class^="menu"] > ul.sections > li > a:active {
+          color: #e2e1e0; }
+
+div[class$="-min"] {
+  width: 100px;
+  max-width: 100px; }
+  div[class$="-min"] > div.logo > img {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    max-height: auto; }
+  div[class$="-min"] > div.logo > h1 {
+    display: none; }
+  div[class$="-min"] > div.userInfo {
+    border: 0;
+    justify-content: center; }
+    div[class$="-min"] > div.userInfo > div.profilePicture {
+      width: 70px;
+      height: 70px;
+      margin: 0; }
+    div[class$="-min"] > div.userInfo > h1 {
+      display: none; }
+  div[class$="-min"] > ul.sections {
+    display: none; }
+
+body#admin > div[class^="content"] > div > div.section {
+  width: 300px;
+  min-width: 300px;
+  border-top: 2px solid #2A3F54;
+  margin: 18px 0;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-wrap: wrap; }
+  @media (min-width: 1572px) {
+    body#admin > div[class^="content"] > div > div.section {
+      max-width: 1254px;
+      min-width: 1254px; } }
+  @media (min-width: 1254px) and (max-width: 1571px) {
+    body#admin > div[class^="content"] > div > div.section {
+      max-width: 936px;
+      min-width: 936px; } }
+  @media (min-width: 936px) and (max-width: 1253px) {
+    body#admin > div[class^="content"] > div > div.section {
+      max-width: 618px;
+      min-width: 618px; } }
+  @media (min-width: 618px) and (max-width: 935px) {
+    body#admin > div[class^="content"] > div > div.section {
+      max-width: 300px;
+      min-width: 300px; } }
+  @media (min-width: 300px) and (max-width: 617px) {
+    body#admin > div[class^="content"] > div > div.section {
+      max-width: 300px;
+      min-width: 300px; } }
+  body#admin > div[class^="content"] > div > div.section > label {
+    background-color: #e2e1e0;
+    font: bold 25px "Century Gothic";
+    margin: 0;
+    color: #2A3F54;
+    transform: translateY(-60%);
+    padding-right: 10px;
+    position: absolute; }
+  body#admin > div[class^="content"] > div > div.section > div.card {
+    width: 100%;
+    margin-top: 18px;
+    display: flex; }
+
+body#admin > div[class^="header"] {
+  height: 50px;
+  width: 100%;
+  background-color: #ededed;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5px 10px 5px 310px;
+  position: fixed;
+  z-index: 2; }
+  body#admin > div[class^="header"] > div.button {
+    display: flex;
+    align-items: center;
+    color: #2A3F54; }
+    body#admin > div[class^="header"] > div.button > i.fa {
+      font-size: 20px;
+      margin-right: 10px; }
+    body#admin > div[class^="header"] > div.button > h1 {
+      font: bold 18px "Century Gothic";
+      margin: 0; }
+  body#admin > div[class^="header"] > div.userInfo {
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: center; }
+    body#admin > div[class^="header"] > div.userInfo > div.profilePicture {
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 2px solid #2A3F54;
+      box-sizing: border-box;
+      margin-right: 5px; }
+      body#admin > div[class^="header"] > div.userInfo > div.profilePicture > img {
+        width: auto;
+        height: auto;
+        min-height: 100%;
+        max-height: 100%; }
+    body#admin > div[class^="header"] > div.userInfo > h1 {
+      color: #2A3F54;
+      font: 18px "Century Gothic";
+      margin: 0; }
+
+body#admin > div[class^="content"] {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  padding: 50px 10px 10px 310px;
+  box-sizing: border-box;
+  z-index: 1; }
+  body#admin > div[class^="content"] > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+    body#admin > div[class^="content"] > div.index {
+      display: block; }
+
+body#admin > div[class^="content"] > div.index > h1, body#admin > div[class^="content"] > div.index > h2 {
+  font-family: "Century Gothic";
+  color: #2A3F54; }
+
+body#admin > div[class^="content"] > div.index h1 {
+  font-size: 40px; }
+
+body#admin > div[class^="content"] > div.index h2 {
+  font-size: 30px;
+  font-weight: 100; }
+
+body#admin > div[class^="content"] > div.index p {
+  font-family: "Century Gothic";
+  font-size: 15px; }
+
+body#admin > div.modal-show {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 5;
+  background: radial-gradient(circle, rgba(20, 20, 20, 0.6), rgba(0, 0, 0, 0.7));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1; }
+  body#admin > div.modal-show > div.box {
+    width: 618px;
+    min-width: 618px;
+    max-height: 90%;
+    overflow: hidden;
+    display: flex; }
+
+body#admin > div.modal-hide {
+  opacity: 0; }
+
+body#admin > div[class^="content"] > div table.table {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  border-collapse: collapse; }
+  body#admin > div[class^="content"] > div table.table > thead > tr {
+    background-color: #2A3F54;
+    font-family: "Century Gothic";
+    color: white;
+    border-radius: 1px; }
+    body#admin > div[class^="content"] > div table.table > thead > tr > th {
+      padding: 5px;
+      font-weight: 100;
+      text-align: left; }
+  body#admin > div[class^="content"] > div table.table > tbody {
+    cursor: pointer; }
+    body#admin > div[class^="content"] > div table.table > tbody > tr {
+      font-family: "Century Gothic";
+      color: #2A3F54; }
+      body#admin > div[class^="content"] > div table.table > tbody > tr:hover {
+        background-color: #ededed; }
+      body#admin > div[class^="content"] > div table.table > tbody > tr > td {
+        padding: 5px;
+        border-bottom: solid 1px #2A3F54; }
+
+body#admin > div[class^="modal"] > div.box > form.newsForm {
+  background-color: #2A3F54;
+  box-sizing: border-box;
+  padding: 10px;
+  align-content: flex-start;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  min-height: 500px; }
+  body#admin > div[class^="modal"] > div.box > form.newsForm > label {
+    font: 200 20px "Century Gothic";
+    color: #e2e1e0;
+    letter-spacing: 3px;
+    text-transform: capitalize;
+    width: 50%; }
+    body#admin > div[class^="modal"] > div.box > form.newsForm > label:last-of-type {
+      width: auto; }
+  body#admin > div[class^="modal"] > div.box > form.newsForm > input[name="title"], body#admin > div[class^="modal"] > div.box > form.newsForm > input[name="description"], body#admin > div[class^="modal"] > div.box > form.newsForm > textarea[name="content"], body#admin > div[class^="modal"] > div.box > form.newsForm > select[name="section"], body#admin > div[class^="modal"] > div.box > form.newsForm > select[name="style"] {
+    width: 100%;
+    padding: 10px;
+    font: 15px "Century Gothic";
+    box-sizing: border-box;
+    background-color: #e2e1e0;
+    border: 0;
+    margin-bottom: 10px; }
+  body#admin > div[class^="modal"] > div.box > form.newsForm > textarea[name="content"] {
+    resize: none; }
+  body#admin > div[class^="modal"] > div.box > form.newsForm > select[name="section"], body#admin > div[class^="modal"] > div.box > form.newsForm > select[name="style"] {
+    width: 50%; }
+  body#admin > div[class^="modal"] > div.box > form.newsForm > input[name="send"], body#admin > div[class^="modal"] > div.box > form.newsForm > input[name="back"] {
+    width: 100px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 0;
+    position: absolute;
+    bottom: 10px;
+    right: 10px; }
+  body#admin > div[class^="modal"] > div.box > form.newsForm > input[name="send"] {
+    right: 120px; }
+  body#admin > div[class^="modal"] > div.box > form.newsForm > input[name="state"] {
+    margin: 0 0 0 10px;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    background-color: #e2e1e0; }
+  body#admin > div[class^="modal"] > div.box > form.newsForm .hidden {
+    display: none; }

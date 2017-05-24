@@ -71,7 +71,7 @@ class NewsCRUD
       $stm = $conn->prepare('call sp_getAllNews()');
       $stm->execute();
       $result = $stm->fetchAll();
-      return json_encode($result);
+      return $result;
     } catch (PDOException $e) {
       die($e->getMessage());
     } finally {
@@ -105,6 +105,28 @@ class NewsCRUD
       $stm->bindParam(1,$news->getId());
       $stm->execute();
       $result = $stm->fetchAll();
+      return $result;
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    } finally {
+      $conn = null;
+      $pdo->closeConnection();
+    }
+  }
+  function setNews($news){
+    $pdo = new Connection();
+    $conn = $pdo->getConnection();
+    try {
+      $stm = $conn->prepare('call sp_setNews(?,?,?,?,?,?,?,?)');
+      $stm->bindParam(1,$news->getId());
+      $stm->bindParam(2,$news->getTitle());
+      $stm->bindParam(3,$news->getDescription());
+      $stm->bindParam(4,$news->getContent());
+      $stm->bindParam(5,$news->getState());
+      $stm->bindParam(6,$news->getStyle());
+      $stm->bindParam(7,$news->getFKidUser());
+      $stm->bindParam(8,$news->getFKidSection());
+      $result = $stm->execute();
       return $result;
     } catch (PDOException $e) {
       die($e->getMessage());

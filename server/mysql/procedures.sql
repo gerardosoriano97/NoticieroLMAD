@@ -183,28 +183,31 @@ create or replace procedure sp_setNews(
 	in _title varchar(100),
 	in _description varchar(255),
 	in _content text,
+    in _state bit(1),
+    in _style int unsigned,
 	in _fk_idUser int unsigned,
-	in _fk_idSection int unsigned,
-    in _fk_idStyle int unsigned
+	in _fk_idSection int unsigned
 )
 begin
-	if _id = 0 then
+	if isnull(_id) then
 	insert into nl_news set
 		title = _title,
         description = _description,
         content = _content,
+        state = _state,
+        style = _style,
         fk_idUser = _fk_idUser,
-        fk_idSection = _fk_idSection,
-        fk_idStyle = _fk_idStyle;
+        fk_idSection = _fk_idSection;
 	else
     update nl_news set
 		title = _title,
         description = _description,
         content = _content,
+        state = _state,
+        style = _style,
         fk_idUser = _fk_idUser,
-        fk_idSection = _fk_idSection,
-        fk_idStyle = _fk_idStyle
-	where id = _id;
+        fk_idSection = _fk_idSection
+	where idNews = _id;
     end if;
 end $$
 delimiter ;
@@ -214,7 +217,7 @@ create or replace procedure sp_getNews(
 	in _idNews int unsigned
 )
 begin
-	select title, description, content, fn_hoursAgo(releaseDate) as hours, releaseDate, 
+	select title, description, content, fn_hoursAgo(releaseDate) as hours, releaseDate, style, state,
 			idUser, fn_fullname(name, lastName) as fullname, avatar, mimeAvatar,
             idSection, sectionName 
             from vw_newsInfo where idNews = _idNews;
@@ -255,8 +258,8 @@ delimiter ;
 delimiter $$
 create or replace procedure sp_getAllNews()
 begin
-	select idNews,title,description,content,idSection,sectionName,idStyle,styleName 
-    from vw_newsByUser order by idNews desc;
+	select idNews,title,description,content,style,state,idSection,sectionName
+    from vw_newsInfo order by idNews desc;
 end $$
 delimiter ;
 

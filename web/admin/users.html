@@ -3,16 +3,45 @@
   <head>
     <meta charset="utf-8">
     <title>U S E R S</title>
-    <link rel="stylesheet" href="../../css/main/main.min.css">
+    <link rel="stylesheet" href="css/main.css">
   </head>
-  <body>
+  <body id="admin">
+    <div class="menu">
+      <h1>Admin</h1>
+      <div class="userInfo">
+        <div class="profilePicture">
+          <img src="../resources/images/user.png" alt="Imagen de perfil">
+        </div>
+        <h1>
+          Bienvenido, <br>
+          <span class="fullname">gerardosoriano97</span>
+        </h1>
+      </div>
+      <ul class="sections">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="news.html">Noticias</a></li>
+        <li><a href="sections.html">Secciones</a></li>
+        <li><a href="multimedia.html">Multimedia</a></li>
+        <li><a href="users.html">Usuarios</a></li>
+        <li><a href="../homepage.html">Salir</a></li>
+      </ul>
+    </div>
     <div class="header">
-      <a href="admin_users.html">Users</a>
-      <a href="admin_news.html">News</a>
+      <div class="button">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        <h1>Menú</h1>
+      </div>
+      <div class="userInfo">
+        <div class="profilePicture">
+          <img src="../resources/images/user.png" alt="Imagen de perfil">
+        </div>
+        <h1 class="fullname">gerardosoriano97</h1>
+      </div>
     </div>
-    <div class="content">
-
-    </div>
-    <script src="../js/dist/bundle.js"></script>
+    <!--Extrenal-->
+    <script type="text/javascript" src="../resources/libs/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../resources/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+    <!--Internal-->
+    <script type="text/javascript" src="js/header.js"></script>
   </body>
 </html>
