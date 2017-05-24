@@ -7,7 +7,6 @@ class Like
   private $fk_idNews;
 
   function __construct(){}
-  function __construct(){}
 
   function getId(){ return $this->id; }
   function setId($id){ $this->id = $id; }

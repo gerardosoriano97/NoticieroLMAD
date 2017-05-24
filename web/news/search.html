@@ -23,18 +23,22 @@
   </div>
   <div class="content">
     <div class="center">
-      <div class="title"></div>
-      <div class="outstanding">
+      <div class="title">
+        <h1>Buscador</h1>
       </div>
+      <input type="search" name="search">
       <div class="section">
-        <label>Noticias Recientes</label>
+        <select class="order" name="ordenar">
+          <option value="0">Ordenar</option>
+          <option value="1">Mas recientes</option>
+          <option value="2">Mas antiguas</option>
+        </select>
       </div>
       <div class="newsSection">
         <select class="order" name="ordenar">
-          <option value="0">Mas recientes</option>
-          <option value="1">Mas antiguas</option>
-          <option value="1">Mas comentadas</option>
-          <option value="1">Mas likeadas</option>
+          <option value="0">Ordenar</option>
+          <option value="1">Mas recientes</option>
+          <option value="2">Mas antiguas</option>
         </select>
         <div class="newsContainer">
         </div>
@@ -46,6 +50,5 @@
   <script type="text/javascript" src="../resources/libs/slick-carousel/slick/slick.min.js"></script>
   <!--Internos-->
   <script type="text/javascript" src="js/header.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

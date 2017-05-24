@@ -260,6 +260,29 @@ begin
 end $$
 delimiter ;
 
+delimiter $$
+create or replace procedure sp_search(
+	in _title varchar(100),
+    in _name varchar(40),
+    in _startDate date,
+    in _endDate date
+)
+begin
+	if isnull(_startDate) then
+		select * from vw_newsInfo 
+		where state = 1 and
+				title like concat('\'%',_title,'%\'') and
+				name or lastname like concat('\'%',_name,'%\'');
+	else
+		select * from vw_newsInfo 
+		where state = 1 and
+				title like concat('\'%',_title,'%\'') and
+				name or lastname like concat('\'%',_name,'%\'') and
+                releaseDate between _startDate and ifnull(_endDate,now());
+	end if;
+end $$
+delimiter ;
+
 /*Comment procedures*/
 delimiter $$
 create or replace procedure sp_setComment(
@@ -304,5 +327,36 @@ create or replace procedure sp_getMultimediaByNews(
 )
 begin
 	select idNews, idMultimedia, path, description, type from vw_multimediaInNews where idNews = _idNews;
+end$$
+delimiter ;
+
+/*Like procedures*/
+delimiter $$
+create or replace procedure sp_setLike(
+	in _idUser int unsigned,
+    in _idNews int unsigned
+)
+begin
+	insert into nl_like(fk_idUser,fk_idNews) values (_idUser,_idNews);
+end$$
+delimiter ;
+
+delimiter $$
+create or replace procedure sp_setDislike(
+	in _idUser int unsigned,
+    in _idNews int unsigned
+)
+begin
+	delete from nl_like where fk_idUser = _idUser and fk_idNews = _idNews;
+end$$
+delimiter ;
+
+delimiter $$
+create or replace procedure sp_getLike(
+	in _idUser int unsigned,
+    in _idNews int unsigned
+)
+begin
+	select idLike from nl_like where fk_idUser = _idUser and fk_idNews = _idNews;
 end$$
 delimiter ;

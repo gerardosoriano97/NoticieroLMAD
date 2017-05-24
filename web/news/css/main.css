@@ -278,7 +278,8 @@ body#commercial > div.content > div.center > div.note {
     display: flex;
     justify-content: space-between;
     padding-bottom: 15px;
-    border-bottom: 1px solid #252525; }
+    border-bottom: 1px solid #252525;
+    position: relative; }
     body#commercial > div.content > div.center > div.note > div.newsInfo > div.writter {
       padding: 10px;
       display: flex;
@@ -302,6 +303,16 @@ body#commercial > div.content > div.center > div.note {
         font-size: 20px; }
     body#commercial > div.content > div.center > div.note > div.newsInfo > span {
       padding-top: 10px; }
+    body#commercial > div.content > div.center > div.note > div.newsInfo > i.fa {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      font-size: 65px;
+      opacity: 0.5; }
+      body#commercial > div.content > div.center > div.note > div.newsInfo > i.fa.liked {
+        color: #ed1b24; }
+      body#commercial > div.content > div.center > div.note > div.newsInfo > i.fa:hover {
+        opacity: 0.8; }
   body#commercial > div.content > div.center > div.note > p {
     font-size: 25px; }
 

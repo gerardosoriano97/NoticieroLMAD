@@ -24,6 +24,7 @@ $(document).ready(function(){
         '<label>'+ msg.news.fullname +'</label>' +
       '</div>' +
       '<span class="date">'+ msg.news.releaseDate +'</span>' +
+      '<i class="fa fa-heart" aria-hidden="true"></i>'+
     '</div>' +
     '<p>'+ msg.news.content +'</p>'
     );
@@ -56,7 +57,41 @@ $(document).ready(function(){
         '</div>'
       );
     });
+  });
+  $.ajax({
+    method:   "POST",
+    url:      "../../server/php/controller/getLike.php" + $(location).attr('search'),
+    data:     {"token":localStorage.getItem("token")}
+  }).done(function(data){
+    if (data == "success") {
+      $('i.fa-heart').addClass('liked').off('click').on('click',dislike);
+    }
   })
+  //Hacemos el like y dislike
+  $('i.fa-heart').on("click",like);
+
+  function like(){
+    $.ajax({
+      method:   "POST",
+      url:      "../../server/php/controller/setLike.php" + $(location).attr('search'),
+      data:     {"token":localStorage.getItem("token")}
+    }).done(function(data){
+      if (data == "success") {
+        $('i.fa-heart').addClass('liked').off('click').on('click',dislike);
+      }
+    })
+  }
+  function dislike(){
+    $.ajax({
+      method:   "POST",
+      url:      "../../server/php/controller/setDislike.php" + $(location).attr('search'),
+      data:     {"token":localStorage.getItem("token")}
+    }).done(function(data){
+      if (data == "success") {
+        $('i.fa-heart').removeClass('liked').off('click').on('click',like);
+      }
+    })
+  }
   //checamos si inicio sesión
   let token = localStorage.getItem("token");
   let isRegistered;
