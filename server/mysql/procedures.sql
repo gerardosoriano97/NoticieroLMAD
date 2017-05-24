@@ -283,6 +283,89 @@ begin
 end $$
 delimiter ;
 
+delimiter $$
+create or replace procedure sp_order(
+	in _type int unsigned,
+    in _idSection int unsigned
+)
+begin
+	if isnull(_idSection) then
+		case _type
+			when 0 then
+				select idNews,title,description, style, fn_hoursAgo(releaseDate) as hours, releaseDate,
+						idUser, fn_fullname(name, lastName) as fullname, avatar, mimeAvatar,
+						idSection,sectionName
+				from vw_newsInfo 
+				where state = 1 and style = 'normal'
+				order by idNews desc limit 0, 15;
+			when 1 then
+				select idNews,title,description, style, fn_hoursAgo(releaseDate) as hours, releaseDate,
+						idUser, fn_fullname(name, lastName) as fullname, avatar, mimeAvatar,
+						idSection,sectionName
+				from vw_newsInfo 
+				where state = 1 and style = 'normal'
+				order by idNews asc limit 0, 15;
+			when 2 then
+				select idNews,title,description, style, fn_hoursAgo(releaseDate) as hours, releaseDate,
+						idUser, fn_fullname(name, lastName) as fullname, avatar, mimeAvatar,
+						idSection,sectionName,
+						count(fk_idNews) as comments
+				from vw_newsInfo 
+				inner join nl_comment on fk_idNews = idNews
+				where state = 1 and style = 'normal'
+				group by idNews
+				order by comments desc, idNews desc limit 0, 15;
+			when 3 then
+				select idNews,title,description, style, fn_hoursAgo(releaseDate) as hours, releaseDate,
+						idUser, fn_fullname(name, lastName) as fullname, avatar, mimeAvatar,
+						idSection,sectionName,
+						count(fk_idNews) as likes
+				from vw_newsInfo 
+				inner join nl_like on fk_idNews = idNews
+				where state = 1 and style = 'normal'
+				group by idNews
+				order by likes desc, idNews desc limit 0, 15;
+		end case;
+    else
+		case _type
+			when 0 then
+				select idNews,title,description, style, fn_hoursAgo(releaseDate) as hours, releaseDate,
+						idUser, fn_fullname(name, lastName) as fullname, avatar, mimeAvatar,
+						idSection,sectionName
+				from vw_newsInfo 
+				where state = 1 and style = 'normal' and idSection = _idSection
+				order by idNews desc limit 0, 15;
+			when 1 then
+				select idNews,title,description, style, fn_hoursAgo(releaseDate) as hours, releaseDate,
+						idUser, fn_fullname(name, lastName) as fullname, avatar, mimeAvatar,
+						idSection,sectionName
+				from vw_newsInfo 
+				where state = 1 and style = 'normal' and idSection = _idSection
+				order by idNews asc limit 0, 15;
+			when 2 then
+				select idNews,title,description, style, fn_hoursAgo(releaseDate) as hours, releaseDate,
+						idUser, fn_fullname(name, lastName) as fullname, avatar, mimeAvatar,
+						idSection,sectionName,
+						count(fk_idNews) as comments
+				from vw_newsInfo 
+				inner join nl_comment on fk_idNews = idNews
+				where state = 1 and style = 'normal' and idSection = _idSection
+				group by idNews
+				order by comments desc, idNews desc limit 0, 15;
+			when 3 then
+				select idNews,title,description, style, fn_hoursAgo(releaseDate) as hours, releaseDate,
+						idUser, fn_fullname(name, lastName) as fullname, avatar, mimeAvatar,
+						idSection,sectionName,
+						count(fk_idNews) as likes
+				from vw_newsInfo 
+				inner join nl_like on fk_idNews = idNews
+				where state = 1 and style = 'normal' and idSection = _idSection
+				group by idNews
+				order by likes desc, idNews desc limit 0, 15;
+		end case;
+    end if;
+end $$
+delimiter ;
 /*Comment procedures*/
 delimiter $$
 create or replace procedure sp_setComment(

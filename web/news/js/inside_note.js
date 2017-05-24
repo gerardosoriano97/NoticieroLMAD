@@ -144,10 +144,11 @@ $(document).ready(function(){
         }).done(function(data){
           $('div.commentsContainer').empty();
           $.each(data,function(key,val){
+            let path;
             if (val.mimeAvatarPattern != null && val.mimeAvatarPattern != '') {
-              let path = 'data:'+val.mimeAvatarPattern+';base64,'+val.avatarPattern;
+              path = 'data:'+val.mimeAvatarPattern+';base64,'+val.avatarPattern;
             }else {
-              let path = '../resources/images/user.png';
+              path = '../resources/images/user.png';
             }
             $('div.commentsContainer').append(''+
               '<div class="comment">'+

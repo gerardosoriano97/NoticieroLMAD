@@ -51,7 +51,32 @@ $(document).ready(function(){
   }).fail(function(jqXHR, textStatus){
     console.log("Request failed: " + textStatus);
   });
-
+  //mandamos ajax para ordenar
+  $('select.order').on('change',function(){
+    $.ajax({
+      method:   "POST",
+      dataType: "json",
+      url:      "../../server/php/controller/order.php" + $(location).attr('search'),
+      data:     {'order':$('select.order option:selected').val()}
+    }).done(function(data){
+      $('#commercial .newsSection > .newsContainer').empty();
+      $.each(data,function(key,val){
+        $('#commercial .newsSection > .newsContainer').append(''+
+          '<a href="inside_note.html?idNews='+ val.idNews +'">'+
+            '<div class="news" id="'+ val.idNews +'">' +
+              '<div class="newsImage">' +
+                '<img src="resources/images/duarte.jpg" alt="Imagen de Duarte bebé">' +
+              '</div>' +
+              '<div class="text">' +
+                '<h1>'+ val.title +'</h1>' +
+                '<h2>'+ val.description +'</h2>' +
+              '</div>' +
+            '</div>' +
+          '</a>'
+        );
+      });
+    });
+  })
   //creamos el carrusel de noticias principales
   $('div.outstanding').slick({
     slidesToShow: 1,

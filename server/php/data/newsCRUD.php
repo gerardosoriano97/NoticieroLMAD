@@ -45,6 +45,24 @@ class NewsCRUD
       $pdo->closeConnection();
     }
   }
+  function order($type,$news){
+    $pdo = new Connection();
+    $conn = $pdo->getConnection();
+    try {
+      $result = array();
+      $stm = $conn->prepare('call sp_order(?,?)');
+      $stm->bindParam(1,$type);
+      $stm->bindParam(2,$news->getFKidSection());
+      $stm->execute();
+      $result = $stm->fetchAll();
+      return $result;
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    } finally {
+      $conn = null;
+      $pdo->closeConnection();
+    }
+  }
   function getAllNews(){
     $pdo = new Connection();
     $conn = $pdo->getConnection();
