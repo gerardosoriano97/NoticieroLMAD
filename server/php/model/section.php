@@ -15,7 +15,7 @@ class Section
   function setName($name){ $this->name = $name; }
 
   function getDescription(){ return $this->description; }
-  function seteDescription($description){ $this->description = $description; }
+  function setDescription($description){ $this->description = $description; }
 }
 
  ?>

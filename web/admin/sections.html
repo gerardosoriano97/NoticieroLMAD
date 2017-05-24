@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>N E W S</title>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body id="admin">
+    <div class="menu">
+      <h1>Admin</h1>
+      <div class="userInfo">
+        <div class="profilePicture">
+          <img src="../resources/images/user.png" alt="Imagen de perfil">
+        </div>
+        <h1>
+          Bienvenido, <br>
+          <span class="fullname">gerardosoriano97</span>
+        </h1>
+      </div>
+      <ul class="sections">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="news.html">Noticias</a></li>
+        <li><a href="sections.html">Secciones</a></li>
+        <li><a href="multimedia.html">Multimedia</a></li>
+        <li><a href="users.html">Usuarios</a></li>
+        <li><a href="../homepage.html">Salir</a></li>
+      </ul>
+    </div>
+    <div class="header">
+      <div class="button">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        <h1>Menú</h1>
+      </div>
+      <div class="userInfo">
+        <div class="profilePicture">
+          <img src="../resources/images/user.png" alt="Imagen de perfil">
+        </div>
+        <h1 class="fullname">gerardosoriano97</h1>
+      </div>
+    </div>
+    <div class="content">
+      <div class="news">
+        <div class="section">
+          <label>Noticias</label>
+          <button id="new" type="button" name="new">añadir noticia</button>
+          <div class="card">
+            <table id="tableSections" class="table">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>nombre</th>
+                  <th>descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-hide">
+      <div class="box">
+        <form class="sectionForm" method="post">
+          <input class="toJson" type="hidden" name="id" value="">
+          <label for="sectionName">Nombre:</label>
+          <input id="sectionName" class="toJson" type="text" name="sectionName" placeholder="Nombre *">
+          <label for="sectionDescription">Descripción:</label>
+          <input id="sectionDescription"class="toJson" type="text" name="sectionDescription" placeholder="Descripción *">
+          <input type="submit" name="send" value="Submit">
+          <input type="button" name="back" value="Back">
+        </form>
+      </div>
+    </div>
+    <!--Extrenal-->
+    <script type="text/javascript" src="../resources/libs/jquery/dist/jquery.min.js"></script>
+    <!--Internal-->
+    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="js/sections.js"></script>
+  </body>
+</html>

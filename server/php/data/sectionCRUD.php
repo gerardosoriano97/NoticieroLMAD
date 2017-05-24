@@ -72,6 +72,23 @@ class SectionCRUD
       $pdo->closeConnection();
     }
   }
+  function updateSection($section){
+    $pdo = new Connection();
+    $conn = $pdo->getConnection();
+    try {
+      $stm = $conn->prepare('call sp_updateSection(?,?,?)');
+      $stm->bindParam(1,$section->getId());
+      $stm->bindParam(2,$section->getName());
+      $stm->bindParam(3,$section->getDescription());
+      $result = $stm->execute();
+      return $result;
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    } finally {
+      $conn = null;
+      $pdo->closeConnection();
+    }
+  }
 }
 
  ?>

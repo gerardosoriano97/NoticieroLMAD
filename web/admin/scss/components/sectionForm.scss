@@ -1,0 +1,49 @@
+body#admin>div[class^="modal"]>div.box>form.sectionForm{
+  background-color: $firstColor;
+  box-sizing: border-box;
+  padding: 10px;
+  align-content: flex-start;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  min-height: 210px;
+  >label{
+    font: 200 20px "Century Gothic";
+    color: #e2e1e0;
+    letter-spacing: 3px;
+    text-transform: capitalize;
+    width: 50%;
+    &:last-of-type{
+      width: auto;
+    }
+  }
+  >input[name="sectionName"], >input[name="sectionDescription"]{
+    width: 100%;
+    padding: 10px;
+    font: 15px "Century Gothic";
+    box-sizing: border-box;
+    background-color: $thirdColor;
+    border: 0;
+    margin-bottom: 10px;
+  }
+  >input[name="send"],>input[name="back"]{
+    width: 100px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 0;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  >input[name="send"]{
+    right: 120px;
+  }
+  >input[name="state"]{
+    margin: 0 0 0 10px;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    background-color: $thirdColor;
+  }
+}
