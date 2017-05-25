@@ -279,24 +279,14 @@ delimiter ;
 
 delimiter $$
 create or replace procedure sp_search(
-	in _title varchar(100),
-    in _name varchar(40),
-    in _startDate date,
-    in _endDate date
+	in _search varchar(100)
 )
 begin
-	if isnull(_startDate) then
-		select * from vw_newsInfo 
-		where state = 1 and
-				title like concat('\'%',_title,'%\'') and
-				name or lastname like concat('\'%',_name,'%\'');
-	else
-		select * from vw_newsInfo 
-		where state = 1 and
-				title like concat('\'%',_title,'%\'') and
-				name or lastname like concat('\'%',_name,'%\'') and
-                releaseDate between _startDate and ifnull(_endDate,now());
-	end if;
+    select idNews,title,description, style, fn_hoursAgo(releaseDate) as hours, releaseDate,
+			idUser, fn_fullname(name, lastName) as fullname, avatar, mimeAvatar,
+			idSection,sectionName 
+	from vw_newsInfo
+    where state = 1 and title like concat('%',_search,'%') or name like concat('%',_search,'%') or lastName like concat('%',_search,'%');
 end $$
 delimiter ;
 

@@ -135,6 +135,23 @@ class NewsCRUD
       $pdo->closeConnection();
     }
   }
+  function search($search){
+    $pdo = new Connection();
+    $conn = $pdo->getConnection();
+    try {
+      $result = array();
+      $stm = $conn->prepare('call sp_search(?)');
+      $stm->bindParam(1,$search);
+      $stm->execute();
+      $result = $stm->fetchAll();
+      return $result;
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    } finally {
+      $conn = null;
+      $pdo->closeConnection();
+    }
+  }
 }
 
  ?>
