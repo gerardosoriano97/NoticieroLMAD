@@ -42,6 +42,21 @@ class CommentCRUD
       $pdo->closeConnection();
     }
   }
+  function deleteComment($comment){
+    $pdo = new Connection();
+    $conn = $pdo->getConnection();
+    try {
+      $stm = $conn->prepare('call sp_deleteComment(?)');
+      $stm->bindParam(1,$comment->getId());
+      $result = $stm->execute();
+      return $result;
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    } finally {
+      $conn = null;
+      $pdo->closeConnection();
+    }
+  }
 }
 
  ?>

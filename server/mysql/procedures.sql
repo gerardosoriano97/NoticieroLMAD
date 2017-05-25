@@ -175,6 +175,20 @@ begin
 end $$
 delimiter ;
 
+delimiter $$
+create or replace procedure sp_updateSection(
+	in _idSection int unsigned,
+    in _sectionName varchar(20),
+    in _sectionDescription varchar(150)
+)
+begin
+	update nl_section set
+		sectionName = _sectionName,
+        sectionDescription = _sectionDescription
+	where idSection = _idSection;
+end $$
+delimiter ;
+
 /*News procedures*/
 
 delimiter $$
@@ -403,6 +417,15 @@ create or replace procedure sp_getCommentInComment(
 begin
 	select fn_fullname(nameChild,lastNameChild) as fullname, avatarChild, mimeAvatarChild, idCommentChild,commentChild,publicationChild
     from vw_commentInComment where idCommentPattern = _idCommentPattern order by publicationChild desc;
+end $$
+delimiter ;
+
+delimiter $$
+create or replace procedure sp_deleteComment(
+	in _idComment int unsigned
+)
+begin
+	delete from nl_comment where idComment = _idComment;
 end $$
 delimiter ;
 

@@ -53,6 +53,7 @@ $(document).ready(function(){
             '<h1>'+val.fullname+'</h1>'+
             '<h2>'+val.commentPattern+'</h2>'+
             '<h3>'+val.publicationPattern+'</h3>'+
+            '<button type="button" class="eliminar" id="'+val.idCommentPattern+'">Eliminar comentario</button>'+
           '</div>'+
         '</div>'
       );
@@ -67,6 +68,40 @@ $(document).ready(function(){
       $('i.fa-heart').addClass('liked').off('click').on('click',dislike);
     }
   })
+
+  $('div.commentsContainer').on("click",'button.eliminar',function(){
+    console.log('comentario a eliminar' + $(this).attr('id'));
+    $.ajax({
+      method:   "POST",
+      dataType: "json",
+      url:      "../../server/php/controller/deleteComment.php" + $(location).attr('search'),
+      data:     {"idComment":$(this).attr('id')}
+    }).done(function(data){
+      $('div.commentsContainer').empty();
+      $.each(data,function(key,val){
+        let path;
+        if (val.mimeAvatarPattern != null && val.mimeAvatarPattern != '') {
+          path = 'data:'+val.mimeAvatarPattern+';base64,'+val.avatarPattern;
+        }else {
+          path = '../resources/images/user.png';
+        }
+        $('div.commentsContainer').append(''+
+          '<div class="comment">'+
+            '<div class="userImage">'+
+              '<img src="'+path+'" alt="">'+
+            '</div>'+
+            '<div class="square"></div>'+
+            '<div class="commentInfo">'+
+              '<h1>'+val.fullname+'</h1>'+
+              '<h2>'+val.commentPattern+'</h2>'+
+              '<h3>'+val.publicationPattern+'</h3>'+
+              '<button type="button" class="eliminar" id="'+val.idCommentPattern+'">Eliminar comentario</button>'+
+            '</div>'+
+          '</div>'
+        );
+      });
+    });
+  });
   //Hacemos el like y dislike
   $('i.fa-heart').on("click",like);
 
@@ -92,6 +127,7 @@ $(document).ready(function(){
       }
     })
   }
+
   //checamos si inicio sesión
   let token = localStorage.getItem("token");
   let isRegistered;
@@ -160,6 +196,7 @@ $(document).ready(function(){
                   '<h1>'+val.fullname+'</h1>'+
                   '<h2>'+val.commentPattern+'</h2>'+
                   '<h3>'+val.publicationPattern+'</h3>'+
+                  '<button type="button" class="eliminar" id="'+val.idCommentPattern+'">Eliminar comentario</button>'+
                 '</div>'+
               '</div>'
             );
